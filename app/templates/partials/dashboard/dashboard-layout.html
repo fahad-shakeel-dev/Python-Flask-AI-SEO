@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEO Master Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="min-h-screen bg-gray-50">
+  <!-- Mobile sidebar toggle -->
+  <input type="checkbox" id="sidebar-toggle" class="hidden">
+
+  <!-- Mobile sidebar -->
+  <div class="fixed inset-0 z-50 lg:hidden transition-opacity duration-300" id="mobile-sidebar">
+    <div class="fixed inset-0 bg-gray-600 bg-opacity-75" id="overlay"></div>
+    <div class="fixed inset-y-0 left-0 flex w-full max-w-xs flex-col bg-white shadow-xl">
+      <div class="flex h-16 items-center justify-between px-6 border-b border-gray-200">
+        <a href="/" class="flex items-center space-x-2">
+          <div class="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-lg">
+            <i data-lucide="bar-chart-3" class="h-6 w-6 text-white"></i>
+          </div>
+          <span class="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            SEO Master
+          </span>
+        </a>
+        <label for="sidebar-toggle" class="cursor-pointer">
+          <i data-lucide="x" class="h-6 w-6 text-gray-400"></i>
+        </label>
+      </div>
+      <nav class="flex-1 px-4 py-6 space-y-2">
+        <a href="/dashboard" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors bg-blue-50 text-blue-700 border-r-2 border-blue-700">
+          <i data-lucide="home" class="mr-3 h-5 w-5"></i>
+          Dashboard
+        </a>
+        <a href="/dashboard/content-analyzer" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+          <i data-lucide="file-text" class="mr-3 h-5 w-5"></i>
+          Content Analyzer
+        </a>
+        <a href="/dashboard/keyword-research" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+          <i data-lucide="search" class="mr-3 h-5 w-5"></i>
+          Keyword Research
+        </a>
+        <a href="/dashboard/competitor-analysis" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+          <i data-lucide="users" class="mr-3 h-5 w-5"></i>
+          Competitor Analysis
+        </a>
+        <a href="/dashboard/site-audit" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+          <i data-lucide="monitor" class="mr-3 h-5 w-5"></i>
+          Site Audit
+        </a>
+        <a href="/dashboard/rank-tracking" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+          <i data-lucide="trending-up" class="mr-3 h-5 w-5"></i>
+          Rank Tracking
+        </a>
+        <a href="/dashboard/serp-analysis" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+          <i data-lucide="target" class="mr-3 h-5 w-5"></i>
+          SERP Analysis
+        </a>
+        <a href="/dashboard/analytics" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+          <i data-lucide="bar-chart-3" class="mr-3 h-5 w-5"></i>
+          Analytics
+        </a>
+      </nav>
+      <div class="border-t border-gray-200 p-4">
+        <div class="flex items-center space-x-3 mb-4">
+          <img src="https://via.placeholder.com/40" alt="User" class="h-10 w-10 rounded-full">
+          <div>
+            <p class="text-sm font-medium text-gray-900">John Doe</p>
+            <p class="text-xs text-gray-500">john@example.com</p>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <a href="/dashboard/settings" class="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+            <i data-lucide="settings" class="mr-3 h-4 w-4"></i>
+            Settings
+          </a>
+          <a href="#" class="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+            <i data-lucide="log-out" class="mr-3 h-4 w-4"></i>
+            Sign Out
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Desktop sidebar -->
+  <div class="hidden lg:flex lg:fixed lg:inset-y-0 lg:w-64 lg:flex-col">
+    <div class="flex flex-col flex-grow bg-white border-r border-gray-200 shadow-sm">
+      <div class="flex items-center h-16 px-6 border-b border-gray-200">
+        <a href="/" class="flex items-center space-x-2">
+          <div class="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-lg">
+            <i data-lucide="bar-chart-3" class="h-6 w-6 text-white"></i>
+          </div>
+          <span class="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            SEO Master
+          </span>
+        </a>
+      </div>
+      <nav class="flex-1 px-4 py-6 space-y-2">
+        <a href="/dashboard" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors bg-blue-50 text-blue-700 border-r-2 border-blue-700">
+          <i data-lucide="home" class="mr-3 h-5 w-5"></i>
+          Dashboard
+        </a>
+        <a href="/dashboard/content-analyzer" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+          <i data-lucide="file-text" class="mr-3 h-5 w-5"></i>
+          Content Analyzer
+        </a>
+        <a href="/dashboard/keyword-research" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+          <i data-lucide="search" class="mr-3 h-5 w-5"></i>
+          Keyword Research
+        </a>
+        <a href="/dashboard/competitor-analysis" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+          <i data-lucide="users" class="mr-3 h-5 w-5"></i>
+          Competitor Analysis
+        </a>
+        <a href="/dashboard/site-audit" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+          <i data-lucide="monitor" class="mr-3 h-5 w-5"></i>
+          Site Audit
+        </a>
+        <a href="/dashboard/rank-tracking" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+          <i data-lucide="trending-up" class="mr-3 h-5 w-5"></i>
+          Rank Tracking
+        </a>
+        <a href="/dashboard/serp-analysis" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+          <i data-lucide="target" class="mr-3 h-5 w-5"></i>
+          SERP Analysis
+        </a>
+        <a href="/dashboard/analytics" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+          <i data-lucide="bar-chart-3" class="mr-3 h-5 w-5"></i>
+          Analytics
+        </a>
+      </nav>
+      <div class="border-t border-gray-200 p-4">
+        <div class="flex items-center space-x-3 mb-4">
+          <img src="https://via.placeholder.com/40" alt="User" class="h-10 w-10 rounded-full">
+          <div>
+            <p class="text-sm font-medium text-gray-900">John Doe</p>
+            <p class="text-xs text-gray-500">john@example.com</p>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <a href="/dashboard/settings" class="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+            <i data-lucide="settings" class="mr-3 h-4 w-4"></i>
+            Settings
+          </a>
+          <a href="#" class="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+            <i data-lucide="log-out" class="mr-3 h-4 w-4"></i>
+            Sign Out
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top bar (mobile) -->
+  <div class="sticky top-0 z-40 bg-white border-b border-gray-200 lg:hidden">
+    <div class="flex items-center justify-between h-16 px-4">
+      <label for="sidebar-toggle" class="text-gray-500 hover:text-gray-600 cursor-pointer">
+        <i data-lucide="menu" class="h-6 w-6"></i>
+      </label>
+      <a href="/" class="flex items-center space-x-2">
+        <div class="bg-gradient-to-r from-blue-600 to-purple-600 p-1 rounded">
+          <i data-lucide="bar-chart-3" class="h-5 w-5 text-white"></i>
+        </div>
+        <span class="text-lg font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          SEO Master
+        </span>
+      </a>
+      <div class="w-6"></div>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <main class="lg:pl-64 p-6">
+    <!-- Placeholder for main content -->
+    <div class="bg-white p-6 rounded-lg shadow-sm">
+      <h1 class="text-2xl font-bold text-gray-900">Dashboard Content</h1>
+      <p class="mt-4 text-gray-600">This is where the main content would go.</p>
+    </div>
+  </main>
+
+  <script>
+    lucide.createIcons();
+  </script>
+
+  <style>
+    #sidebar-toggle:checked ~ #mobile-sidebar {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    #sidebar-toggle:not(:checked) ~ #mobile-sidebar {
+      opacity: 0;
+      pointer-events: none;
+    }
+    #overlay {
+      display: none;
+    }
+    #sidebar-toggle:checked ~ #mobile-sidebar #overlay {
+      display: block;
+    }
+  </style>
+</body>
+</html>

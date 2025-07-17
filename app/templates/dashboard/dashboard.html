@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEO Master Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="min-h-screen bg-gray-50">
+  <!-- Mobile sidebar toggle -->
+  <input type="checkbox" id="sidebar-toggle" class="hidden">
+
+  <!-- Mobile sidebar -->
+  <div class="fixed inset-0 z-50 lg:hidden transition-opacity duration-300" id="mobile-sidebar">
+    <div class="fixed inset-0 bg-gray-600 bg-opacity-75 cursor-pointer" id="overlay"></div>
+    <div class="fixed inset-y-0 left-0 w-full max-w-xs flex flex-col bg-white shadow-xl">
+      <div class="flex h-16 items-center justify-between px-6 border-b border-gray-200">
+        <a href="/" class="flex items-center space-x-2">
+          <div class="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-lg">
+            <i data-lucide="bar-chart-3" class="h-6 w-6 text-white"></i>
+          </div>
+          <span class="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            SEO Master
+          </span>
+        </a>
+        <label for="sidebar-toggle" class="cursor-pointer">
+          <i data-lucide="x" class="h-6 w-6 text-gray-400"></i>
+        </label>
+      </div>
+      <nav class="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
+        <a href="#" data-section="dashboard" class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors bg-blue-50 text-blue-700 border-r-2 border-blue-700">
+          <i data-lucide="home" class="mr-3 h-5 w-5"></i>
+          Dashboard
+        </a>
+        <a href="/dashboard?feature=content-analyzer" data-section="content-analyzer" class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+          <i data-lucide="file-text" class="mr-3 h-5 w-5"></i>
+          Content Analyzer
+        </a>
+        <a href="/dashboard?feature=keyword-research" data-section="keyword-research" class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+          <i data-lucide="search" class="mr-3 h-5 w-5"></i>
+          Keyword Research
+        </a>
+        <a href="/dashboard?feature=competitor-analysis" data-section="competitor-analysis" class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+.Anywhere
+          <i data-lucide="users" class="mr-3 h-5 w-5"></i>
+          Competitor Analysis
+        </a>
+        <a href="/dashboard?feature=site-audit" data-section="site-audit" class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+          <i data-lucide="monitor" class="mr-3 h-5 w-5"></i>
+          Site Audit
+        </a>
+        <a href="/dashboard?feature=gap-analyiser" data-section="gap-analyiser" class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+          <i data-lucide="trending-up" class="mr-3 h-5 w-5"></i>
+          Gap analyzer
+        </a>
+        <a href="#" data-section="serp-analysis" class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+          <i data-lucide="target" class="mr-3 h-5 w-5"></i>
+          SERP Analysis
+        </a>
+        <a href="#" data-section="analytics" class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+          <i data-lucide="bar-chart-3" class="mr-3 h-5 w-5"></i>
+          Analytics
+        </a>
+      </nav>
+      <div class="border-t border-gray-200 p-4">
+        <div class="flex items-center space-x-3 mb-4">
+          <img src="https://via.placeholder.com/40" alt="User" class="h-10 w-10 rounded-full">
+          <div>
+            <p class="text-sm font-medium text-gray-900">John Doe</p>
+            <p class="text-xs text-gray-500">john@example.com</p>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <a href="#" data-section="settings" class="nav-link flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+            <i data-lucide="settings" class="mr-3 h-4 w-4"></i>
+            Settings
+          </a>
+          <a href="#" class="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+            <i data-lucide="log-out" class="mr-3 h-4 w-4"></i>
+            Sign Out
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Desktop sidebar
+
+   -->
+  <div class="hidden lg:flex lg:fixed lg:inset-y-0 lg:w-64 lg:flex-col h-screen">
+    <div class="flex flex-col h-full bg-white border-r border-gray-200 shadow-sm">
+      <div class="flex items-center h-16 px-6 border-b border-gray-200">
+        <a href="/" class="flex items-center space-x-2">
+          <div class="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-lg">
+            <i data-lucide="bar-chart-3" class="h-6 w-6 text-white"></i>
+          </div>
+          <span class="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            SEO Master
+          </span>
+        </a>
+      </div>
+      <nav class="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
+        <a href="#" data-section="dashboard" class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors bg-blue-50 text-blue-700 border-r-2 border-blue-700">
+          <i data-lucide="home" class="mr-3 h-5 w-5"></i>
+          Dashboard
+        </a>
+        <a href="/dashboard?feature=content-analyzer" data-section="content-analyzer" class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+          <i data-lucide="file-text" class="mr-3 h-5 w-5"></i>
+          Content Analyzer
+        </a>
+        <a href="/dashboard?feature=keyword-research" data-section="keyword-research" class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+          <i data-lucide="search" class="mr-3 h-5 w-5"></i>
+          Keyword Research
+        </a>
+        <a href="/dashboard?feature=competitor-analysis" data-section="competitor-analysis" class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+          <i data-lucide="users" class="mr-3 h-5 w-5"></i>
+          Competitor Analysis
+        </a>
+        <a href="/dashboard?feature=site-audit" data-section="site-audit" class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+          <i data-lucide="monitor" class="mr-3 h-5 w-5"></i>
+          Site Audit
+        </a>
+        <a href="/dashboard?feature=gap-analyiser" data-section="gap-analyiser" class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+          <i data-lucide="trending-up" class="mr-3 h-5 w-5"></i>
+          Gap analyzer
+        </a>
+        <a href="#" data-section="serp-analysis" class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+          <i data-lucide="target" class="mr-3 h-5 w-5"></i>
+          SERP Analysis
+        </a>
+        <a href="#" data-section="analytics" class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+          <i data-lucide="bar-chart-3" class="mr-3 h-5 w-5"></i>
+          Analytics
+        </a>
+      </nav>
+      <div class="border-t border-gray-200 p-4">
+        <div class="flex items-center space-x-3 mb-4">
+          <img src="https://via.placeholder.com/40" alt="User" class="h-10 w-10 rounded-full">
+          <div>
+            <p class="text-sm font-medium text-gray-900">John Doe</p>
+            <p class="text-xs text-gray-500">john@example.com</p>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <a href="#" data-section="settings" class="nav-link flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+            <i data-lucide="settings" class="mr-3 h-4 w-4"></i>
+            Settings
+          </a>
+          <a href="#" class="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+            <i data-lucide="log-out" class="mr-3 h-4 w-4"></i>
+            Sign Out
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top bar (mobile) -->
+  <div class="sticky top-0 z-40 bg-white border-b border-gray-200 lg:hidden">
+    <div class="flex items-center justify-between h-16 px-4">
+      <label for="sidebar-toggle" class="text-gray-500 hover:text-gray-600 cursor-pointer">
+        <i data-lucide="menu" class="h-6 w-6"></i>
+      </label>
+      <a href="/" class="flex items-center space-x-2">
+        <div class="bg-gradient-to-r from-blue-600 to-purple-600 p-1 rounded">
+          <i data-lucide="bar-chart-3" class="h-5 w-5 text-white"></i>
+        </div>
+        <span class="text-lg font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          SEO Master
+        </span>
+      </a>
+      <div class="w-6"></div>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <main class="lg:pl-[17rem] p-6 min-h-screen">
+    <!-- Dashboard Section -->
+    <div id="dashboard" class="content-section max-w-7xl mx-auto">
+      <div class="space-y-8">
+        <!-- Header -->
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <div>
+            <h1 class="text-3xl font-bold text-gray-900">Dashboard</h1>
+            <p class="text-gray-600 mt-2">Welcome back! Here's your SEO performance overview.</p>
+          </div>
+          <div class="flex items-center space-x-4">
+            <select class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white">
+              <option value="7d">Last 7 days</option>
+              <option value="30d">Last 30 days</option>
+              <option value="90d">Last 90 days</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm font-medium text-gray-600">Total Traffic</p>
+                <p class="text-2xl font-bold text-gray-900 mt-2">45,231</p>
+              </div>
+              <div class="bg-blue-50 p-3 rounded-lg">
+                <i data-lucide="users" class="h-6 w-6 text-blue-600"></i>
+              </div>
+            </div>
+            <div class="flex items-center mt-4">
+              <i data-lucide="arrow-up" class="h-4 w-4 text-green-500 mr-1"></i>
+              <span class="text-sm font-medium text-green-600">+12.5%</span>
+              <span class="text-sm text-gray-500 ml-2">vs last period</span>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm font-medium text-gray-600">SEO Score</p>
+                <p class="text-2xl font-bold text-gray-900 mt-2">94/100</p>
+              </div>
+              <div class="bg-blue-50 p-3 rounded-lg">
+                <i data-lucide="trending-up" class="h-6 w-6 text-blue-600"></i>
+              </div>
+            </div>
+            <div class="flex items-center mt-4">
+              <i data-lucide="arrow-up" class="h-4 w-4 text-green-500 mr-1"></i>
+              <span class="text-sm font-medium text-green-600">+8.2%</span>
+              <span class="text-sm text-gray-500 ml-2">vs last period</span>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm font-medium text-gray-600">Page Views</p>
+                <p class="text-2xl font-bold text-gray-900 mt-2">128,543</p>
+              </div>
+              <div class="bg-blue-50 p-3 rounded-lg">
+                <i data-lucide="eye" class="h-6 w-6 text-blue-600"></i>
+              </div>
+            </div>
+            <div class="flex items-center mt-4">
+              <i data-lucide="arrow-up" class="h-4 w-4 text-green-500 mr-1"></i>
+              <span class="text-sm font-medium text-green-600">+5.7%</span>
+              <span class="text-sm text-gray-500 ml-2">vs last period</span>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm font-medium text-gray-600">Click Rate</p>
+                <p class="text-2xl font-bold text-gray-900 mt-2">3.24%</p>
+              </div>
+              <div class="bg-blue-50 p-3 rounded-lg">
+                <i data-lucide="mouse-pointer" class="h-6 w-6 text-blue-600"></i>
+              </div>
+            </div>
+            <div class="flex items-center mt-4">
+              <i data-lucide="arrow-down" class="h-4 w-4 text-red-500 mr-1"></i>
+              <span class="text-sm font-medium text-red-600">-2.1%</span>
+              <span class="text-sm text-gray-500 ml-2">vs last period</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <!-- Traffic Chart -->
+          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="text-lg font-semibold text-gray-900">Traffic Overview</h3>
+              <i data-lucide="bar-chart-3" class="h-5 w-5 text-gray-400"></i>
+            </div>
+            <div class="h-64 bg-gray-50 rounded-lg flex items-center justify-center">
+              <p class="text-gray-500">Traffic Chart Placeholder</p>
+            </div>
+          </div>
+
+          <!-- SEO Performance -->
+          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="text-lg font-semibold text-gray-900">SEO Performance</h3>
+              <i data-lucide="trending-up" class="h-5 w-5 text-gray-400"></i>
+            </div>
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-600">Organic Traffic</span>
+                <div class="flex items-center">
+                  <div class="w-32 bg-gray-200 rounded-full h-2 mr-3">
+                    <div class="bg-green-500 h-2 rounded-full w-3/4"></div>
+                  </div>
+                  <span class="text-sm font-medium text-gray-900">75%</span>
+                </div>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-600">Keyword Rankings</span>
+                <div class="flex items-center">
+                  <div class="w-32 bg-gray-200 rounded-full h-2 mr-3">
+                    <div class="bg-blue-500 h-2 rounded-full w-4/5"></div>
+                  </div>
+                  <span class="text-sm font-medium text-gray-900">80%</span>
+                </div>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-600">Page Speed</span>
+                <div class="flex items-center">
+                  <div class="w-32 bg-gray-200 rounded-full h-2 mr-3">
+                    <div class="bg-yellow-500 h-2 rounded-full w-3/5"></div>
+                  </div>
+                  <span class="text-sm font-medium text-gray-900">60%</span>
+                </div>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-600">Mobile Optimization</span>
+                <div class="flex items-center">
+                  <div class="w-32 bg-gray-200 rounded-full h-2 mr-3">
+                    <div class="bg-green-500 h-2 rounded-full w-5/6"></div>
+                  </div>
+                  <span class="text-sm font-medium text-gray-900">85%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-6">Recent Activity</h3>
+          <div class="space-y-4">
+            <div class="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg">
+              <div class="bg-green-100 p-2 rounded-full">
+                <i data-lucide="trending-up" class="h-4 w-4 text-green-600"></i>
+              </div>
+              <div class="flex-1">
+                <p class="text-sm font-medium text-gray-900">SEO score improved</p>
+                <p class="text-xs text-gray-500">Your overall SEO score increased by 5 points</p>
+              </div>
+              <span class="text-xs text-gray-400">2 hours ago</span>
+            </div>
+            <div class="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg">
+              <div class="bg-blue-100 p-2 rounded-full">
+                <i data-lucide="bar-chart-3" class="h-4 w-4 text-blue-600"></i>
+              </div>
+              <div class="flex-1">
+                <p class="text-sm font-medium text-gray-900">New keyword rankings</p>
+                <p class="text-xs text-gray-500">15 new keywords entered top 10 results</p>
+              </div>
+              <span class="text-xs text-gray-400">5 hours ago</span>
+            </div>
+            <div class="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg">
+              <div class="bg-purple-100 p-2 rounded-full">
+                <i data-lucide="users" class="h-4 w-4 text-purple-600"></i>
+              </div>
+              <div class="flex-1">
+                <p class="text-sm font-medium text-gray-900">Traffic milestone reached</p>
+                <p class="text-xs text-gray-500">Congratulations! You've reached 50K monthly visitors</p>
+              </div>
+              <span class="text-xs text-gray-400">1 day ago</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content Analyzer Section -->
+  <div id="content-analyzer" class="content-section max-w-7xl mx-auto hidden">
+      {% include 'partials/dashboard/content-analyzer.html' %}
+    </div>
+
+    <!-- Keyword Research Section -->
+    <div id="keyword-research" class="content-section max-w-7xl mx-auto hidden">
+    {% include 'partials/dashboard/keyword-research.html' %}
+    </div>
+
+    <!-- Competitor Analysis Section -->
+    <div id="competitor-analysis" class="content-section max-w-7xl mx-auto hidden">
+  {% include 'partials/dashboard/Compitator-analyzer.html' %}
+    </div>
+
+    <!-- Site Audit Section -->
+    <div id="site-audit" class="content-section max-w-7xl mx-auto hidden">
+      {% include 'partials/dashboard/site_audit.html' %}
+    </div>
+
+    <!-- Gap Analyiser Section -->
+
+    <div id="gap-analyiser" class="content-section max-w-7xl mx-auto hidden">
+        {% include 'partials/dashboard/gap-analyiser.html' %}
+    </div>
+
+    <!-- SERP Analysis Section -->
+    <div id="serp-analysis" class="content-section max-w-7xl mx-auto hidden">
+      <div class="space-y-8">
+        <h1 class="text-3xl font-bold text-gray-900">SERP Analysis</h1>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-4">SERP Insights</h3>
+          <p class="text-gray-600">Analyze search engine results pages to optimize your strategy.</p>
+          <div class="mt-6 h-64 bg-gray-50 rounded-lg flex items-center justify-center">
+            <p class="text-gray-500">SERP Analysis Chart Placeholder</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Analytics Section -->
+    <div id="analytics" class="content-section max-w-7xl mx-auto hidden">
+      <div class="space-y-8">
+        <h1 class="text-3xl font-bold text-gray-900">Analytics</h1>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-4">Performance Metrics</h3>
+          <p class="text-gray-600">View detailed analytics to measure your SEO success.</p>
+          <div class="mt-6 h-64 bg-gray-50 rounded-lg flex items-center justify-center">
+            <p class="text-gray-500">Analytics Dashboard Placeholder</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings Section -->
+    <div id="settings" class="content-section max-w-7xl mx-auto hidden">
+      <div class="space-y-8">
+        <h1 class="text-3xl font-bold text-gray-900">Settings</h1>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-4">Account Settings</h3>
+          <p class="text-gray-600">Manage your account preferences and configurations.</p>
+          <div class="mt-6 h-64 bg-gray-50 rounded-lg flex items-center justify-center">
+            <p class="text-gray-500">Settings Form Placeholder</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    lucide.createIcons();
+
+    // Handle overlay click to close mobile sidebar
+    document.getElementById('overlay').addEventListener('click', () => {
+      document.getElementById('sidebar-toggle').checked = false;
+    });
+
+    // Handle navigation link clicks for SPA behavior
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const sectionId = link.getAttribute('data-section');
+        // Hide all content sections
+        document.querySelectorAll('.content-section').forEach(section => {
+          section.classList.add('hidden');
+        });
+        // Show the selected section
+        document.getElementById(sectionId).classList.remove('hidden');
+        // Update active link styling
+        document.querySelectorAll('.nav-link').forEach(l => {
+          l.classList.remove('bg-blue-50', 'text-blue-700', 'border-r-2', 'border-blue-700');
+          l.classList.add('text-gray-700', 'hover:bg-gray-100');
+        });
+        link.classList.remove('text-gray-700', 'hover:bg-gray-100');
+        link.classList.add('bg-blue-50', 'text-blue-700', 'border-r-2', 'border-blue-700');
+        // Close mobile sidebar on link click
+        document.getElementById('sidebar-toggle').checked = false;
+      });
+    });
+  </script>
+
+  <style>
+    #sidebar-toggle:checked ~ #mobile-sidebar {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    #sidebar-toggle:not(:checked) ~ #mobile-sidebar {
+      opacity: 0;
+      pointer-events: none;
+    }
+    #overlay {
+      display: none;
+    }
+    #sidebar-toggle:checked ~ #mobile-sidebar #overlay {
+      display: block;
+    }
+    #sidebar-toggle:checked ~ body {
+      overflow: hidden;
+    }
+  </style>
+</body>
+</html>

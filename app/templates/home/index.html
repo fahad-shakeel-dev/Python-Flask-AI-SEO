@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Home - AI SEO Helper{% endblock %}
+
+{% block content %}
+  {% include 'partials/navbar.html' %}
+  <section class="text-center">
+    <!-- Hero Section -->
+    {% include 'partials/HomeComponents/hero-section.html' %}
+
+    <!-- Features Section -->
+    {% include 'partials/HomeComponents/features-section.html' %}
+
+    <!-- Benefits Section -->
+    {% include 'partials/HomeComponents/benefits-section.html' %}
+
+    <!-- Testimonials Section -->
+    {% include 'partials/HomeComponents/testimonials-section.html' %}
+
+    <!-- Call to Action Section -->
+    {% include 'partials/HomeComponents/cta-section.html' %}
+  </section>
+  {% include 'partials/footer.html' %}
+{% endblock %}

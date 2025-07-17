@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site Audit Tool</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/lucide-static@0.18.0/font/lucide.css" rel="stylesheet">
+  <style>
+    .gradient-bg {
+      background: linear-gradient(to right, #4f46e5, #7c3aed);
+    }
+    .gradient-text {
+      background: linear-gradient(to right, #4f46e5, #7c3aed);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .audit-ring {
+      background: conic-gradient(from 0deg, #4f46e5 0deg, #7c3aed 280deg, #e5e7eb 280deg);
+    }
+    .loading-spinner {
+      border-top-color: #4f46e5;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <div class="min-h-screen">
+    <!-- Dashboard Layout -->
+    <div class="flex">
+      <!-- Sidebar would go here -->
+      <div class="flex-1 p-8">
+        <div class="space-y-8">
+          <!-- Header -->
+          <div class="flex justify-between items-center">
+            <div>
+              <h1 class="text-3xl font-bold text-gray-900">Site Audit</h1>
+              <p class="text-gray-600 mt-2">Comprehensive technical SEO analysis for desktop and mobile</p>
+            </div>
+          </div>
+
+          <!-- Audit URL Input -->
+          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">Start New Audit</h3>
+            <div class="flex flex-col md:flex-row gap-4">
+              <input
+                type="url"
+                id="auditUrl"
+                placeholder="Enter website URL to audit..."
+                class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              />
+              <div class="flex gap-2">
+                <select id="deviceType" class="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                  <option value="desktop">Desktop</option>
+                  <option value="mobile">Mobile</option>
+                </select>
+                <button id="startAuditBtn" class="gradient-bg text-white px-8 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300">
+                  Start Audit
+                </button>
+              </div>
+            </div>
+            <div id="auditProgress" class="hidden mt-4">
+              <div class="flex items-center space-x-4">
+                <div class="w-8 h-8 border-4 border-gray-200 border-t-blue-600 rounded-full loading-spinner"></div>
+                <div>
+                  <p class="text-gray-700">Audit in progress...</p>
+                  <p id="auditStatus" class="text-sm text-gray-500">Initializing</p>
+                </div>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-2.5 mt-2">
+                <div id="progressBar" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Audit Results Section (Initially Hidden) -->
+          <div id="auditResults" class="hidden">
+            <!-- Audit Score Overview -->
+            <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+              <div class="flex justify-between items-center mb-6">
+                <h3 class="text-lg font-semibold text-gray-900">Audit Results Overview</h3>
+                <div class="flex items-center text-sm text-gray-500">
+                  <i data-lucide="monitor" class="w-4 h-4 mr-1"></i>
+                  <span id="auditedDevice">Desktop</span>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+                <div class="text-center">
+                  <div class="relative w-20 h-20 mx-auto mb-3">
+                    <div class="w-20 h-20 rounded-full bg-gray-200">
+                      <div id="overallScoreRing" class="w-20 h-20 rounded-full flex items-center justify-center">
+                        <div class="w-16 h-16 rounded-full bg-white flex items-center justify-center">
+                          <span id="overallScore" class="text-xl font-bold text-gray-900">78</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="text-sm font-medium text-gray-900">Overall Score</p>
+                </div>
+
+                <div class="text-center">
+                  <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-gray-100 flex items-center justify-center">
+                    <span id="performanceScore" class="text-lg font-bold text-gray-900">85</span>
+                  </div>
+                  <p class="text-sm font-medium text-gray-900">Performance</p>
+                  <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
+                    <div id="performanceBar" class="h-2 rounded-full bg-green-500" style="width: 85%"></div>
+                  </div>
+                </div>
+
+                <div class="text-center">
+                  <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-gray-100 flex items-center justify-center">
+                    <span id="seoScore" class="text-lg font-bold text-gray-900">72</span>
+                  </div>
+                  <p class="text-sm font-medium text-gray-900">SEO</p>
+                  <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
+                    <div id="seoBar" class="h-2 rounded-full bg-yellow-500" style="width: 72%"></div>
+                  </div>
+                </div>
+
+                <div class="text-center">
+                  <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-gray-100 flex items-center justify-center">
+                    <span id="accessibilityScore" class="text-lg font-bold text-gray-900">89</span>
+                  </div>
+                  <p class="text-sm font-medium text-gray-900">Accessibility</p>
+                  <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
+                    <div id="accessibilityBar" class="h-2 rounded-full bg-green-500" style="width: 89%"></div>
+                  </div>
+                </div>
+
+                <div class="text-center">
+                  <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-gray-100 flex items-center justify-center">
+                    <span id="bestPracticesScore" class="text-lg font-bold text-gray-900">76</span>
+                  </div>
+                  <p class="text-sm font-medium text-gray-900">Best Practices</p>
+                  <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
+                    <div id="bestPracticesBar" class="h-2 rounded-full bg-yellow-500" style="width: 76%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Issues Summary -->
+            <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+              <h3 class="text-lg font-semibold text-gray-900 mb-6">Issues Summary</h3>
+              <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                <div class="bg-red-50 p-4 rounded-lg">
+                  <div class="flex items-center">
+                    <i data-lucide="x-circle" class="h-6 w-6 text-red-600 mr-2"></i>
+                    <div>
+                      <p class="text-sm text-gray-600">Errors</p>
+                      <p id="errorCount" class="text-xl font-bold text-red-600">12</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="bg-yellow-50 p-4 rounded-lg">
+                  <div class="flex items-center">
+                    <i data-lucide="alert-triangle" class="h-6 w-6 text-yellow-600 mr-2"></i>
+                    <div>
+                      <p class="text-sm text-gray-600">Warnings</p>
+                      <p id="warningCount" class="text-xl font-bold text-yellow-600">28</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="bg-blue-50 p-4 rounded-lg">
+                  <div class="flex items-center">
+                    <i data-lucide="clock" class="h-6 w-6 text-blue-600 mr-2"></i>
+                    <div>
+                      <p class="text-sm text-gray-600">Notices</p>
+                      <p id="noticeCount" class="text-xl font-bold text-blue-600">15</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg">
+                  <div class="flex items-center">
+                    <i data-lucide="check-circle" class="h-6 w-6 text-green-600 mr-2"></i>
+                    <div>
+                      <p class="text-sm text-gray-600">Passed</p>
+                      <p id="passedCount" class="text-xl font-bold text-green-600">145</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="space-y-4" id="issuesList">
+                <!-- Issues will be dynamically inserted here -->
+              </div>
+            </div>
+
+            <!-- Detailed Analysis Tabs -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200">
+              <div class="border-b border-gray-200">
+                <nav class="flex overflow-x-auto px-6">
+                  <button data-tab="overview" class="tab-btn flex items-center py-4 px-1 border-b-2 font-medium text-sm border-blue-500 text-blue-600">
+                    <i data-lucide="monitor" class="mr-2 h-4 w-4"></i>
+                    Overview
+                  </button>
+                  <button data-tab="performance" class="tab-btn flex items-center py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500">
+                    <i data-lucide="clock" class="mr-2 h-4 w-4"></i>
+                    Performance
+                  </button>
+                  <button data-tab="seo" class="tab-btn flex items-center py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500">
+                    <i data-lucide="search" class="mr-2 h-4 w-4"></i>
+                    SEO Issues
+                  </button>
+                  <button data-tab="technical" class="tab-btn flex items-center py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500">
+                    <i data-lucide="shield" class="mr-2 h-4 w-4"></i>
+                    Technical
+                  </button>
+                  <button data-tab="mobile" class="tab-btn flex items-center py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500">
+                    <i data-lucide="smartphone" class="mr-2 h-4 w-4"></i>
+                    Mobile
+                  </button>
+                </nav>
+              </div>
+
+              <div class="p-6">
+                <!-- Overview Tab Content -->
+                <div id="overviewTab" class="tab-content space-y-6">
+                  <h3 class="text-lg font-semibold text-gray-900">Audit Overview</h3>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                      <h4 class="font-medium text-gray-900 mb-3">Pages Crawled</h4>
+                      <div id="pagesCrawled" class="text-2xl font-bold text-blue-600 mb-2">247</div>
+                      <p class="text-sm text-gray-600">Total pages analyzed</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                      <h4 class="font-medium text-gray-900 mb-3">Crawl Depth</h4>
+                      <div id="crawlDepth" class="text-2xl font-bold text-blue-600 mb-2">5</div>
+                      <p class="text-sm text-gray-600">Maximum depth reached</p>
+                    </div>
+                  </div>
+
+                  <div class="bg-gray-50 p-4 rounded-lg">
+                    <h4 class="font-medium text-gray-900 mb-3">Top Recommendations</h4>
+                    <ul id="recommendationsList" class="space-y-2">
+                      <!-- Recommendations will be inserted here -->
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Performance Tab Content -->
+                <div id="performanceTab" class="tab-content hidden space-y-6">
+                  <h3 class="text-lg font-semibold text-gray-900">Performance Analysis</h3>
+                  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="performanceMetrics">
+                    <!-- Performance metrics will be inserted here -->
+                  </div>
+
+                  <div class="bg-gray-50 p-4 rounded-lg">
+                    <h4 class="font-medium text-gray-900 mb-3">Performance Recommendations</h4>
+                    <ul class="space-y-2">
+                      <li class="text-sm text-gray-700">• Compress and optimize images</li>
+                      <li class="text-sm text-gray-700">• Minify CSS and JavaScript files</li>
+                      <li class="text-sm text-gray-700">• Enable browser caching</li>
+                      <li class="text-sm text-gray-700">• Use a Content Delivery Network (CDN)</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- SEO Tab Content -->
+                <div id="seoTab" class="tab-content hidden space-y-6">
+                  <h3 class="text-lg font-semibold text-gray-900">SEO Issues</h3>
+                  <div class="space-y-4" id="seoIssuesList">
+                    <!-- SEO issues will be inserted here -->
+                  </div>
+                </div>
+
+                <!-- Technical Tab Content -->
+                <div id="technicalTab" class="tab-content hidden space-y-6">
+                  <h3 class="text-lg font-semibold text-gray-900">Technical Analysis</h3>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                      <h4 class="font-medium text-gray-900 mb-3">Server Response</h4>
+                      <div class="space-y-2">
+                        <div class="flex justify-between text-sm">
+                          <span class="text-gray-600">Response Time</span>
+                          <span id="responseTime" class="font-medium text-green-600">245ms</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                          <span class="text-gray-600">Status Code</span>
+                          <span id="statusCode" class="font-medium text-green-600">200 OK</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                          <span class="text-gray-600">SSL Certificate</span>
+                          <span id="sslStatus" class="font-medium text-green-600">Valid</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                      <h4 class="font-medium text-gray-900 mb-3">Crawlability</h4>
+                      <div class="space-y-2">
+                        <div class="flex justify-between text-sm">
+                          <span class="text-gray-600">Robots.txt</span>
+                          <span id="robotsStatus" class="font-medium text-green-600">Found</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                          <span class="text-gray-600">XML Sitemap</span>
+                          <span id="sitemapStatus" class="font-medium text-green-600">Found</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                          <span class="text-gray-600">Blocked Pages</span>
+                          <span id="blockedPages" class="font-medium text-yellow-600">3</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Mobile Tab Content -->
+                <div id="mobileTab" class="tab-content hidden space-y-6">
+                  <h3 class="text-lg font-semibold text-gray-900">Mobile Optimization</h3>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                      <h4 class="font-medium text-gray-900 mb-3">Mobile Usability</h4>
+                      <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                          <span class="text-sm text-gray-600">Responsive Design</span>
+                          <i data-lucide="check-circle" class="h-5 w-5 text-green-500"></i>
+                        </div>
+                        <div class="flex items-center justify-between">
+                          <span class="text-sm text-gray-600">Viewport Meta Tag</span>
+                          <i data-lucide="check-circle" class="h-5 w-5 text-green-500"></i>
+                        </div>
+                        <div class="flex items-center justify-between">
+                          <span class="text-sm text-gray-600">Touch Elements</span>
+                          <i data-lucide="alert-triangle" class="h-5 w-5 text-yellow-500"></i>
+                        </div>
+                        <div class="flex items-center justify-between">
+                          <span class="text-sm text-gray-600">Font Size</span>
+                          <i data-lucide="check-circle" class="h-5 w-5 text-green-500"></i>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                      <h4 class="font-medium text-gray-900 mb-3">Mobile Performance</h4>
+                      <div class="space-y-3">
+                        <div class="flex justify-between text-sm">
+                          <span class="text-gray-600">Mobile Speed Score</span>
+                          <span id="mobileSpeedScore" class="font-medium text-yellow-600">68</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                          <span class="text-gray-600">First Contentful Paint</span>
+                          <span id="mobileFCP" class="font-medium text-yellow-600">2.1s</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                          <span class="text-gray-600">Largest Contentful Paint</span>
+                          <span id="mobileLCP" class="font-medium text-red-600">4.2s</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Initialize Lucide icons
+    document.addEventListener('DOMContentLoaded', function() {
+      lucide.createIcons();
+
+      // Tab switching functionality
+      const tabButtons = document.querySelectorAll('.tab-btn');
+      const tabContents = document.querySelectorAll('.tab-content');
+
+      tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Remove active state from all buttons
+          tabButtons.forEach(btn => {
+            btn.classList.remove('border-blue-500', 'text-blue-600');
+            btn.classList.add('border-transparent', 'text-gray-500');
+          });
+
+          // Add active state to clicked button
+          button.classList.remove('border-transparent', 'text-gray-500');
+          button.classList.add('border-blue-500', 'text-blue-600');
+
+          // Hide all tab contents
+          tabContents.forEach(content => {
+            content.classList.add('hidden');
+          });
+
+          // Show selected tab content
+          const tabId = button.getAttribute('data-tab') + 'Tab';
+          document.getElementById(tabId).classList.remove('hidden');
+        });
+      });
+
+      // Audit simulation
+      const startAuditBtn = document.getElementById('startAuditBtn');
+      const auditUrlInput = document.getElementById('auditUrl');
+      const deviceTypeSelect = document.getElementById('deviceType');
+      const auditProgress = document.getElementById('auditProgress');
+      const auditResults = document.getElementById('auditResults');
+      const progressBar = document.getElementById('progressBar');
+      const auditStatus = document.getElementById('auditStatus');
+      const auditedDevice = document.getElementById('auditedDevice');
+
+      startAuditBtn.addEventListener('click', () => {
+        const url = auditUrlInput.value.trim();
+        const device = deviceTypeSelect.value;
+
+        if (!url) {
+          alert('Please enter a valid URL');
+          return;
+        }
+
+        // Show loading state
+        auditProgress.classList.remove('hidden');
+        auditResults.classList.add('hidden');
+        startAuditBtn.disabled = true;
+        startAuditBtn.innerHTML = 'Auditing...';
+
+        // Simulate audit progress
+        let progress = 0;
+        const auditSimulation = setInterval(() => {
+          progress += Math.floor(Math.random() * 10) + 5;
+          if (progress > 100) progress = 100;
+
+          progressBar.style.width = `${progress}%`;
+
+          // Update status text based on progress
+          if (progress < 30) {
+            auditStatus.textContent = 'Initializing crawler...';
+          } else if (progress < 60) {
+            auditStatus.textContent = 'Analyzing page structure...';
+          } else if (progress < 80) {
+            auditStatus.textContent = 'Checking performance metrics...';
+          } else {
+            auditStatus.textContent = 'Generating report...';
+          }
+
+          if (progress === 100) {
+            clearInterval(auditSimulation);
+            simulateAuditResults(url, device);
+          }
+        }, 500);
+      });
+
+      function simulateAuditResults(url, device) {
+        // Hide progress, show results
+        auditProgress.classList.add('hidden');
+        auditResults.classList.remove('hidden');
+        startAuditBtn.disabled = false;
+        startAuditBtn.innerHTML = 'Start Audit';
+
+        // Set audited URL and device
+        auditedDevice.textContent = device.charAt(0).toUpperCase() + device.slice(1);
+
+        // Generate random scores (based on device)
+        const isMobile = device === 'mobile';
+        const overallScore = isMobile ? Math.floor(Math.random() * 20) + 70 : Math.floor(Math.random() * 20) + 75;
+        const performanceScore = isMobile ? Math.floor(Math.random() * 25) + 60 : Math.floor(Math.random() * 25) + 65;
+        const seoScore = Math.floor(Math.random() * 30) + 65;
+        const accessibilityScore = Math.floor(Math.random() * 20) + 75;
+        const bestPracticesScore = Math.floor(Math.random() * 25) + 70;
+
+        // Update scores
+        document.getElementById('overallScore').textContent = overallScore;
+        document.getElementById('performanceScore').textContent = performanceScore;
+        document.getElementById('seoScore').textContent = seoScore;
+        document.getElementById('accessibilityScore').textContent = accessibilityScore;
+        document.getElementById('bestPracticesScore').textContent = bestPracticesScore;
+
+        // Update progress bars
+        document.getElementById('performanceBar').style.width = `${performanceScore}%`;
+        document.getElementById('seoBar').style.width = `${seoScore}%`;
+        document.getElementById('accessibilityBar').style.width = `${accessibilityScore}%`;
+        document.getElementById('bestPracticesBar').style.width = `${bestPracticesScore}%`;
+
+        // Update score ring color
+        const overallScoreRing = document.getElementById('overallScoreRing');
+        overallScoreRing.style.background = `conic-gradient(from 0deg, #4f46e5 0deg, #7c3aed ${(overallScore / 100) * 360}deg, #e5e7eb ${(overallScore / 100) * 360}deg)`;
+
+        // Generate random issue counts
+        const errorCount = Math.floor(Math.random() * 15) + 5;
+        const warningCount = Math.floor(Math.random() * 25) + 10;
+        const noticeCount = Math.floor(Math.random() * 20) + 5;
+        const passedCount = Math.floor(Math.random() * 100) + 100;
+
+        document.getElementById('errorCount').textContent = errorCount;
+        document.getElementById('warningCount').textContent = warningCount;
+        document.getElementById('noticeCount').textContent = noticeCount;
+        document.getElementById('passedCount').textContent = passedCount;
+
+        // Generate issues list
+        const issuesList = document.getElementById('issuesList');
+        issuesList.innerHTML = '';
+
+        const issues = [
+          {
+            type: "error",
+            category: "SEO",
+            title: "Missing meta descriptions",
+            description: `${Math.floor(Math.random() * 20) + 5} pages are missing meta descriptions`,
+            impact: "high",
+            pages: Math.floor(Math.random() * 20) + 5
+          },
+          {
+            type: "warning",
+            category: "Performance",
+            title: "Large images not optimized",
+            description: "Images could be compressed to improve loading speed",
+            impact: "medium",
+            pages: Math.floor(Math.random() * 15) + 3
+          },
+          {
+            type: "error",
+            category: "Technical",
+            title: "Broken internal links",
+            description: `Found ${Math.floor(Math.random() * 10) + 2} broken internal links`,
+            impact: "high",
+            pages: Math.floor(Math.random() * 10) + 2
+          },
+          {
+            type: "warning",
+            category: "Accessibility",
+            title: "Images missing alt text",
+            description: `${Math.floor(Math.random() * 25) + 8} images are missing alt text`,
+            impact: "medium",
+            pages: Math.floor(Math.random() * 25) + 8
+          }
+        ];
+
+        issues.forEach(issue => {
+          const issueElement = document.createElement('div');
+          issueElement.className = 'border border-gray-200 rounded-lg p-4';
+          issueElement.innerHTML = `
+            <div class="flex items-start justify-between">
+              <div class="flex items-start">
+                ${issue.type === "error" ?
+                  '<i data-lucide="x-circle" class="h-5 w-5 text-red-500 mr-3 mt-0.5"></i>' :
+                  '<i data-lucide="alert-triangle" class="h-5 w-5 text-yellow-500 mr-3 mt-0.5"></i>'}
+                <div>
+                  <h4 class="font-medium text-gray-900">${issue.title}</h4>
+                  <p class="text-sm text-gray-600 mt-1">${issue.description}</p>
+                  <div class="flex items-center mt-2 space-x-4">
+                    <span class="text-xs text-gray-500">Category: ${issue.category}</span>
+                    <span class="text-xs text-gray-500">Pages affected: ${issue.pages}</span>
+                  </div>
+                </div>
+              </div>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                issue.impact === "high" ? "bg-red-100 text-red-800" :
+                issue.impact === "medium" ? "bg-yellow-100 text-yellow-800" : "bg-green-100 text-green-800"
+              }">
+                ${issue.impact} impact
+              </span>
+            </div>
+          `;
+          issuesList.appendChild(issueElement);
+        });
+
+        // Update other metrics
+        document.getElementById('pagesCrawled').textContent = Math.floor(Math.random() * 200) + 50;
+        document.getElementById('crawlDepth').textContent = Math.floor(Math.random() * 4) + 3;
+
+        // Update recommendations
+        const recommendationsList = document.getElementById('recommendationsList');
+        recommendationsList.innerHTML = `
+          <li class="flex items-center text-sm">
+            <i data-lucide="check-circle" class="h-4 w-4 text-green-500 mr-2"></i>
+            Fix missing meta descriptions on ${Math.floor(Math.random() * 20) + 5} pages
+          </li>
+          <li class="flex items-center text-sm">
+            <i data-lucide="check-circle" class="h-4 w-4 text-green-500 mr-2"></i>
+            Optimize images to improve page load speed
+          </li>
+          <li class="flex items-center text-sm">
+            <i data-lucide="check-circle" class="h-4 w-4 text-green-500 mr-2"></i>
+            Fix broken internal links
+          </li>
+          <li class="flex items-center text-sm">
+            <i data-lucide="check-circle" class="h-4 w-4 text-green-500 mr-2"></i>
+            Add alt text to images for better accessibility
+          </li>
+        `;
+
+        // Update performance metrics
+        const performanceMetrics = [
+          { name: "First Contentful Paint", value: isMobile ? `${(Math.random() * 1.5 + 1.5).toFixed(1)}s` : `${(Math.random() * 1.2 + 0.8).toFixed(1)}s`, status: isMobile ? "warning" : "good" },
+          { name: "Largest Contentful Paint", value: isMobile ? `${(Math.random() * 2 + 2).toFixed(1)}s` : `${(Math.random() * 1.5 + 1).toFixed(1)}s`, status: isMobile ? "warning" : "good" },
+          { name: "First Input Delay", value: `${Math.floor(Math.random() * 50) + 30}ms`, status: "good" },
+          { name: "Cumulative Layout Shift", value: (Math.random() * 0.1 + 0.05).toFixed(2), status: "warning" },
+          { name: "Speed Index", value: isMobile ? `${(Math.random() * 1.5 + 2).toFixed(1)}s` : `${(Math.random() * 1 + 1.5).toFixed(1)}s`, status: isMobile ? "warning" : "good" },
+          { name: "Time to Interactive", value: isMobile ? `${(Math.random() * 2 + 2.5).toFixed(1)}s` : `${(Math.random() * 1.5 + 1.5).toFixed(1)}s`, status: isMobile ? "warning" : "good" }
+        ];
+
+        const performanceMetricsContainer = document.getElementById('performanceMetrics');
+        performanceMetricsContainer.innerHTML = '';
+
+        performanceMetrics.forEach(metric => {
+          const metricElement = document.createElement('div');
+          metricElement.className = 'bg-gray-50 p-4 rounded-lg';
+          metricElement.innerHTML = `
+            <div class="flex items-center justify-between mb-2">
+              <h4 class="font-medium text-gray-900">${metric.name}</h4>
+              <span class="w-3 h-3 rounded-full ${
+                metric.status === "good" ? "bg-green-500" :
+                metric.status === "warning" ? "bg-yellow-500" : "bg-red-500"
+              }"></span>
+            </div>
+            <div class="text-2xl font-bold text-gray-900">${metric.value}</div>
+          `;
+          performanceMetricsContainer.appendChild(metricElement);
+        });
+
+        // Update SEO issues
+        const seoIssues = [
+          { issue: "Duplicate title tags", count: Math.floor(Math.random() * 10) + 2, severity: "high" },
+          { issue: "Missing H1 tags", count: Math.floor(Math.random() * 15) + 3, severity: "high" },
+          { issue: "Long title tags", count: Math.floor(Math.random() * 20) + 5, severity: "medium" },
+          { issue: "Missing canonical tags", count: Math.floor(Math.random() * 8) + 2, severity: "medium" },
+          { issue: "Thin content pages", count: Math.floor(Math.random() * 15) + 5, severity: "low" }
+        ];
+
+        const seoIssuesList = document.getElementById('seoIssuesList');
+        seoIssuesList.innerHTML = '';
+
+        seoIssues.forEach(issue => {
+          const issueElement = document.createElement('div');
+          issueElement.className = 'border border-gray-200 rounded-lg p-4';
+          issueElement.innerHTML = `
+            <div class="flex items-center justify-between">
+              <div>
+                <h4 class="font-medium text-gray-900">${issue.issue}</h4>
+                <p class="text-sm text-gray-600 mt-1">${issue.count} instances found</p>
+              </div>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                issue.severity === "high" ? "bg-red-100 text-red-800" :
+                issue.severity === "medium" ? "bg-yellow-100 text-yellow-800" : "bg-green-100 text-green-800"
+              }">
+                ${issue.severity}
+              </span>
+            </div>
+          `;
+          seoIssuesList.appendChild(issueElement);
+        });
+
+        // Update technical metrics
+        document.getElementById('responseTime').textContent = `${Math.floor(Math.random() * 200) + 100}ms`;
+        document.getElementById('blockedPages').textContent = Math.floor(Math.random() * 5) + 1;
+
+        // Update mobile metrics if device is mobile
+        if (isMobile) {
+          document.getElementById('mobileSpeedScore').textContent = Math.floor(Math.random() * 30) + 60;
+          document.getElementById('mobileFCP').textContent = `${(Math.random() * 1.5 + 1.5).toFixed(1)}s`;
+          document.getElementById('mobileLCP').textContent = `${(Math.random() * 2 + 2.5).toFixed(1)}s`;
+        }
+
+        // Refresh icons
+        lucide.createIcons();
+      }
+    });
+  </script>
+</body>
+</html>
