@@ -512,7 +512,7 @@ from app.analyzer import (
     extract_keywords, get_readability, grammar_and_spelling,
     summarize_text, sentiment_analysis, seo_score, get_content_stats, run_gap_analysis
 )
-
+from app.models.middleware import login_required
 # Set up logging
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
@@ -540,6 +540,7 @@ def services():
     return render_template('services/services.html')
 
 @main_bp.route('/dashboard', methods=['GET', 'POST'])
+@login_required
 def dashboard():
     feature = request.args.get('feature', 'dashboard')
     stats = {

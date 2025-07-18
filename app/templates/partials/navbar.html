@@ -1,3 +1,197 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8" />-->
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0" />-->
+<!--  <title>SEO Master - Navbar</title>-->
+
+<!--  &lt;!&ndash; ✅ Tailwind CSS (Latest) &ndash;&gt;-->
+<!--  <script src="https://cdn.tailwindcss.com"></script>-->
+
+<!--  &lt;!&ndash; ✅ Lucide Icons &ndash;&gt;-->
+<!--  <script src="https://unpkg.com/lucide@latest"></script>-->
+
+<!--  <style>-->
+<!--    /* Custom styles for premium look */-->
+<!--    .navbar {-->
+<!--      background: linear-gradient(90deg, #1a202c, #2d3748);-->
+<!--      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);-->
+<!--    }-->
+
+<!--    .logo-text {-->
+<!--      background: linear-gradient(45deg, #60a5fa, #a3bffa);-->
+<!--      -webkit-background-clip: text;-->
+<!--      -webkit-text-fill-color: transparent;-->
+<!--      font-weight: 700;-->
+<!--      letter-spacing: -0.5px;-->
+<!--    }-->
+
+<!--    .nav-item {-->
+<!--      color: #a0aec0;-->
+<!--      transition: color 0.3s ease, transform 0.2s ease;-->
+<!--    }-->
+
+<!--    .nav-item:hover {-->
+<!--      color: #ffffff;-->
+<!--      transform: translateX(5px);-->
+<!--    }-->
+
+<!--    .mobile-menu {-->
+<!--      position: fixed;-->
+<!--      top: 0;-->
+<!--      right: -100%;-->
+<!--      width: 300px;-->
+<!--      height: 100%;-->
+<!--      background: #2d3748;-->
+<!--      padding-top: 60px;-->
+<!--      transition: right 0.3s ease-in-out;-->
+<!--      z-index: 50;-->
+<!--      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);-->
+<!--    }-->
+
+<!--    .mobile-menu.open {-->
+<!--      right: 0;-->
+<!--    }-->
+
+<!--    .overlay {-->
+<!--      display: none;-->
+<!--      position: fixed;-->
+<!--      top: 0;-->
+<!--      left: 0;-->
+<!--      width: 100%;-->
+<!--      height: 100%;-->
+<!--      background: rgba(0, 0, 0, 0.5);-->
+<!--      z-index: 40;-->
+<!--      transition: opacity 0.3s ease;-->
+<!--    }-->
+
+<!--    .overlay.active {-->
+<!--      display: block;-->
+<!--    }-->
+<!--  </style>-->
+<!--</head>-->
+<!--<body class="bg-gray-100">-->
+<!--  <nav class="navbar sticky top-0 z-50 text-white">-->
+<!--    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">-->
+<!--      &lt;!&ndash; Logo &ndash;&gt;-->
+<!--      <a href="/" class="flex items-center space-x-2">-->
+<!--        <span class="text-xl logo-text">SEO Master</span>-->
+<!--      </a>-->
+
+<!--      &lt;!&ndash; Desktop Navigation &ndash;&gt;-->
+<!--      <div class="hidden md:flex items-center space-x-6">-->
+<!--        <a href="/features" class="nav-item text-sm">Features</a>-->
+<!--&lt;!&ndash;        <div class="relative group">&ndash;&gt;-->
+<!--&lt;!&ndash;          <a href="/resources" class="nav-item text-sm">Resources</a>&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="absolute hidden group-hover:block bg-gray-800 rounded-md shadow-lg mt-2 py-2 w-40">&ndash;&gt;-->
+<!--&lt;!&ndash;            <a href="/resource1" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700">Resource 1</a>&ndash;&gt;-->
+<!--&lt;!&ndash;            <a href="/resource2" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700">Resource 2</a>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--        <a href="/about" class="nav-item text-sm">About</a>-->
+<!--        <a href="/services" class="nav-item text-sm">Services</a>-->
+<!--        <a href="/contact" class="nav-item text-sm">Contact</a>-->
+<!--      </div>-->
+
+<!--      &lt;!&ndash; Auth Buttons &ndash;&gt;-->
+<!--      <div class="hidden md:flex items-center space-x-4">-->
+<!--        <a href="/auth/login" class="text-blue-400 hover:text-blue-300 text-sm font-medium">Login</a>-->
+<!--        <a href="/auth/signup" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full text-sm font-semibold transition-colors duration-200">Try for FREE</a>-->
+<!--      </div>-->
+
+<!--      &lt;!&ndash; Mobile Menu Button &ndash;&gt;-->
+<!--      <button id="mobileMenuButton" class="md:hidden p-2 text-gray-300 hover:text-white">-->
+<!--        <i data-lucide="menu" class="h-6 w-6"></i>-->
+<!--      </button>-->
+
+<!--      &lt;!&ndash; Mobile Menu &ndash;&gt;-->
+<!--      <div id="mobileMenu" class="mobile-menu">-->
+<!--        <button id="closeMobileMenu" class="absolute top-4 right-4 text-gray-300 hover:text-white">-->
+<!--          <i data-lucide="x" class="h-6 w-6"></i>-->
+<!--        </button>-->
+<!--        <div class="flex flex-col space-y-4 px-6">-->
+<!--          <a href="/features" class="nav-item text-base">Features</a>-->
+<!--          <a href="/resources" class="nav-item text-base">Resources</a>-->
+<!--          <a href="/domains" class="nav-item text-base">Domains</a>-->
+<!--          <a href="/pricing" class="nav-item text-base">Pricing</a>-->
+<!--          <a href="/contact" class="nav-item text-base">Contact</a>-->
+<!--          <a href="/login" class="text-blue-400 hover:text-blue-300 text-base font-medium">Login</a>-->
+<!--          <a href="/signup" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full text-base font-semibold text-center">Try for FREE</a>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      &lt;!&ndash; Overlay for closing mobile menu &ndash;&gt;-->
+<!--      <div id="overlay" class="overlay"></div>-->
+<!--    </div>-->
+<!--  </nav>-->
+
+<!--  <script>-->
+<!--    // Initialize Lucide icons-->
+<!--    lucide.createIcons();-->
+
+<!--    const mobileMenuButton = document.getElementById('mobileMenuButton');-->
+<!--    const mobileMenu = document.getElementById('mobileMenu');-->
+<!--    const closeMobileMenu = document.getElementById('closeMobileMenu');-->
+<!--    const overlay = document.getElementById('overlay');-->
+<!--    let isOpen = false;-->
+
+<!--    mobileMenuButton.addEventListener('click', () => {-->
+<!--      isOpen = true;-->
+<!--      mobileMenu.classList.add('open');-->
+<!--      overlay.classList.add('active');-->
+<!--      mobileMenuButton.innerHTML = '';-->
+<!--      const icon = document.createElement('i');-->
+<!--      icon.setAttribute('data-lucide', 'x');-->
+<!--      icon.classList.add('h-6', 'w-6');-->
+<!--      mobileMenuButton.appendChild(icon);-->
+<!--      lucide.createIcons();-->
+<!--    });-->
+
+<!--    closeMobileMenu.addEventListener('click', () => {-->
+<!--      isOpen = false;-->
+<!--      mobileMenu.classList.remove('open');-->
+<!--      overlay.classList.remove('active');-->
+<!--      mobileMenuButton.innerHTML = '';-->
+<!--      const icon = document.createElement('i');-->
+<!--      icon.setAttribute('data-lucide', 'menu');-->
+<!--      icon.classList.add('h-6', 'w-6');-->
+<!--      mobileMenuButton.appendChild(icon);-->
+<!--      lucide.createIcons();-->
+<!--    });-->
+
+<!--    overlay.addEventListener('click', () => {-->
+<!--      if (isOpen) {-->
+<!--        isOpen = false;-->
+<!--        mobileMenu.classList.remove('open');-->
+<!--        overlay.classList.remove('active');-->
+<!--        mobileMenuButton.innerHTML = '';-->
+<!--        const icon = document.createElement('i');-->
+<!--        icon.setAttribute('data-lucide', 'menu');-->
+<!--        icon.classList.add('h-6', 'w-6');-->
+<!--        mobileMenuButton.appendChild(icon);-->
+<!--        lucide.createIcons();-->
+<!--      }-->
+<!--    });-->
+<!--  </script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,22 +275,20 @@
       <!-- Desktop Navigation -->
       <div class="hidden md:flex items-center space-x-6">
         <a href="/features" class="nav-item text-sm">Features</a>
-<!--        <div class="relative group">-->
-<!--          <a href="/resources" class="nav-item text-sm">Resources</a>-->
-<!--          <div class="absolute hidden group-hover:block bg-gray-800 rounded-md shadow-lg mt-2 py-2 w-40">-->
-<!--            <a href="/resource1" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700">Resource 1</a>-->
-<!--            <a href="/resource2" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700">Resource 2</a>-->
-<!--          </div>-->
-<!--        </div>-->
         <a href="/about" class="nav-item text-sm">About</a>
         <a href="/services" class="nav-item text-sm">Services</a>
         <a href="/contact" class="nav-item text-sm">Contact</a>
       </div>
 
-      <!-- Auth Buttons -->
+      <!-- Auth Buttons (Dynamic based on session) -->
       <div class="hidden md:flex items-center space-x-4">
-        <a href="/auth/login" class="text-blue-400 hover:text-blue-300 text-sm font-medium">Login</a>
-        <a href="/auth/signup" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full text-sm font-semibold transition-colors duration-200">Try for FREE</a>
+        {% if 'user_id' not in session %}
+          <a href="/auth/login" class="text-blue-400 hover:text-blue-300 text-sm font-medium">Login</a>
+          <a href="/auth/signup" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full text-sm font-semibold transition-colors duration-200">Try for FREE</a>
+        {% else %}
+          <a href="/dashboard" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full text-sm font-semibold transition-colors duration-200">Dashboard</a>
+          <a href="/auth/logout" class="text-blue-400 hover:text-blue-300 text-sm font-medium">Logout</a>
+        {% endif %}
       </div>
 
       <!-- Mobile Menu Button -->
@@ -111,12 +303,16 @@
         </button>
         <div class="flex flex-col space-y-4 px-6">
           <a href="/features" class="nav-item text-base">Features</a>
-          <a href="/resources" class="nav-item text-base">Resources</a>
-          <a href="/domains" class="nav-item text-base">Domains</a>
-          <a href="/pricing" class="nav-item text-base">Pricing</a>
+          <a href="/about" class="nav-item text-base">About</a>
+          <a href="/services" class="nav-item text-base">Services</a>
           <a href="/contact" class="nav-item text-base">Contact</a>
-          <a href="/login" class="text-blue-400 hover:text-blue-300 text-base font-medium">Login</a>
-          <a href="/signup" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full text-base font-semibold text-center">Try for FREE</a>
+          {% if 'user_id' not in session %}
+            <a href="/auth/login" class="text-blue-400 hover:text-blue-300 text-base font-medium">Login</a>
+            <a href="/auth/signup" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full text-base font-semibold text-center">Try for FREE</a>
+          {% else %}
+            <a href="/dashboard" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full text-base font-semibold text-center">Dashboard</a>
+            <a href="/auth/logout" class="text-blue-400 hover:text-blue-300 text-base font-medium">Logout</a>
+          {% endif %}
         </div>
       </div>
 
