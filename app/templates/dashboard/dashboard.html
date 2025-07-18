@@ -29,7 +29,7 @@
         </label>
       </div>
       <nav class="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
-        <a href="#" data-section="dashboard" class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors bg-blue-50 text-blue-700 border-r-2 border-blue-700">
+        <a href="/dashboard?feature=dashboard" data-section="dashboard" class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors bg-blue-50 text-blue-700 border-r-2 border-blue-700">
           <i data-lucide="home" class="mr-3 h-5 w-5"></i>
           Dashboard
         </a>
@@ -101,7 +101,7 @@
         </a>
       </div>
       <nav class="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
-        <a href="#" data-section="dashboard" class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors bg-blue-50 text-blue-700 border-r-2 border-blue-700">
+        <a href="/dashboard?feature=dashboard" data-section="dashboard" class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors bg-blue-50 text-blue-700 border-r-2 border-blue-700">
           <i data-lucide="home" class="mr-3 h-5 w-5"></i>
           Dashboard
         </a>
@@ -430,37 +430,87 @@
     </div>
   </main>
 
+<!--  <script>-->
+<!--    lucide.createIcons();-->
+
+<!--    // Handle overlay click to close mobile sidebar-->
+<!--    document.getElementById('overlay').addEventListener('click', () => {-->
+<!--      document.getElementById('sidebar-toggle').checked = false;-->
+<!--    });-->
+
+<!--    // Handle navigation link clicks for SPA behavior-->
+<!--    document.querySelectorAll('.nav-link').forEach(link => {-->
+<!--      link.addEventListener('click', (e) => {-->
+<!--        e.preventDefault();-->
+<!--        const sectionId = link.getAttribute('data-section');-->
+<!--        // Hide all content sections-->
+<!--        document.querySelectorAll('.content-section').forEach(section => {-->
+<!--          section.classList.add('hidden');-->
+<!--        });-->
+<!--        // Show the selected section-->
+<!--        document.getElementById(sectionId).classList.remove('hidden');-->
+<!--        // Update active link styling-->
+<!--        document.querySelectorAll('.nav-link').forEach(l => {-->
+<!--          l.classList.remove('bg-blue-50', 'text-blue-700', 'border-r-2', 'border-blue-700');-->
+<!--          l.classList.add('text-gray-700', 'hover:bg-gray-100');-->
+<!--        });-->
+<!--        link.classList.remove('text-gray-700', 'hover:bg-gray-100');-->
+<!--        link.classList.add('bg-blue-50', 'text-blue-700', 'border-r-2', 'border-blue-700');-->
+<!--        // Close mobile sidebar on link click-->
+<!--        document.getElementById('sidebar-toggle').checked = false;-->
+<!--      });-->
+<!--    });-->
+<!--  </script>-->
+
+
   <script>
-    lucide.createIcons();
+  lucide.createIcons();
 
-    // Handle overlay click to close mobile sidebar
-    document.getElementById('overlay').addEventListener('click', () => {
-      document.getElementById('sidebar-toggle').checked = false;
+  // Show section based on URL ?feature=
+  function showSectionFromURL() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const feature = urlParams.get('feature') || 'dashboard';
+
+    // Hide all sections
+    document.querySelectorAll('.content-section').forEach(section => {
+      section.classList.add('hidden');
     });
 
-    // Handle navigation link clicks for SPA behavior
+    // Show selected section
+    const target = document.getElementById(feature);
+    if (target) {
+      target.classList.remove('hidden');
+    }
+
+    // Update nav link active state
     document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const sectionId = link.getAttribute('data-section');
-        // Hide all content sections
-        document.querySelectorAll('.content-section').forEach(section => {
-          section.classList.add('hidden');
-        });
-        // Show the selected section
-        document.getElementById(sectionId).classList.remove('hidden');
-        // Update active link styling
-        document.querySelectorAll('.nav-link').forEach(l => {
-          l.classList.remove('bg-blue-50', 'text-blue-700', 'border-r-2', 'border-blue-700');
-          l.classList.add('text-gray-700', 'hover:bg-gray-100');
-        });
-        link.classList.remove('text-gray-700', 'hover:bg-gray-100');
-        link.classList.add('bg-blue-50', 'text-blue-700', 'border-r-2', 'border-blue-700');
-        // Close mobile sidebar on link click
-        document.getElementById('sidebar-toggle').checked = false;
-      });
+      link.classList.remove('bg-blue-50', 'text-blue-700', 'border-r-2', 'border-blue-700');
+      link.classList.add('text-gray-700', 'hover:bg-gray-100');
     });
-  </script>
+
+    const activeLink = document.querySelector(`.nav-link[data-section="${feature}"]`);
+    if (activeLink) {
+      activeLink.classList.remove('text-gray-700', 'hover:bg-gray-100');
+      activeLink.classList.add('bg-blue-50', 'text-blue-700', 'border-r-2', 'border-blue-700');
+    }
+  }
+
+  // Run when page loads
+  window.addEventListener('DOMContentLoaded', showSectionFromURL);
+
+  // Re-run on every nav link click
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      // Wait a short moment after click to reflect updated URL
+      setTimeout(showSectionFromURL, 50);
+    });
+  });
+
+  // Handle overlay click to close mobile sidebar
+  document.getElementById('overlay').addEventListener('click', () => {
+    document.getElementById('sidebar-toggle').checked = false;
+  });
+</script>
 
   <style>
     #sidebar-toggle:checked ~ #mobile-sidebar {

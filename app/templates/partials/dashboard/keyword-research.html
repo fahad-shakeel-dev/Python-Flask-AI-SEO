@@ -501,371 +501,1317 @@
 
 
 
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>SEO Keyword Research Tool</title>-->
+<!--    <script src="https://cdn.tailwindcss.com"></script>-->
+<!--    <style>-->
+<!--        :root {-->
+<!--            &#45;&#45;primary: 220 90% 56%;-->
+<!--            &#45;&#45;primary-foreground: 0 0% 100%;-->
+<!--            &#45;&#45;primary-glow: 220 100% 70%;-->
+<!--            &#45;&#45;secondary: 210 40% 98%;-->
+<!--            &#45;&#45;secondary-foreground: 222.2 84% 4.9%;-->
+<!--            &#45;&#45;accent: 210 40% 96%;-->
+<!--            &#45;&#45;accent-foreground: 222.2 84% 4.9%;-->
+<!--            &#45;&#45;muted: 210 40% 96%;-->
+<!--            &#45;&#45;muted-foreground: 215.4 16.3% 46.9%;-->
+<!--            &#45;&#45;destructive: 0 84.2% 60.2%;-->
+<!--            &#45;&#45;destructive-foreground: 210 40% 98%;-->
+<!--            &#45;&#45;success: 142 76% 36%;-->
+<!--            &#45;&#45;success-foreground: 355.7 100% 97.3%;-->
+<!--            &#45;&#45;warning: 38 92% 50%;-->
+<!--            &#45;&#45;warning-foreground: 48 96% 89%;-->
+<!--            &#45;&#45;background: 0 0% 100%;-->
+<!--            &#45;&#45;foreground: 222.2 84% 4.9%;-->
+<!--            &#45;&#45;card: 0 0% 100%;-->
+<!--            &#45;&#45;card-foreground: 222.2 84% 4.9%;-->
+<!--            &#45;&#45;popover: 0 0% 100%;-->
+<!--            &#45;&#45;popover-foreground: 222.2 84% 4.9%;-->
+<!--            &#45;&#45;border: 214.3 31.8% 91.4%;-->
+<!--            &#45;&#45;input: 214.3 31.8% 91.4%;-->
+<!--            &#45;&#45;ring: 220 90% 56%;-->
+<!--            &#45;&#45;gradient-primary: linear-gradient(135deg, hsl(var(&#45;&#45;primary)), hsl(var(&#45;&#45;primary-glow)));-->
+<!--            &#45;&#45;gradient-hero: linear-gradient(135deg, hsl(var(&#45;&#45;primary)) 0%, hsl(var(&#45;&#45;primary-glow)) 100%);-->
+<!--            &#45;&#45;gradient-card: linear-gradient(145deg, hsl(var(&#45;&#45;card)) 0%, hsl(var(&#45;&#45;accent)) 100%);-->
+<!--            &#45;&#45;shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);-->
+<!--            &#45;&#45;shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);-->
+<!--            &#45;&#45;shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);-->
+<!--            &#45;&#45;shadow-glow: 0 0 20px hsl(var(&#45;&#45;primary) / 0.3);-->
+<!--            &#45;&#45;transition-base: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);-->
+<!--            &#45;&#45;transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);-->
+<!--        }-->
+<!--        .dark {-->
+<!--            &#45;&#45;background: 222.2 84% 4.9%;-->
+<!--            &#45;&#45;foreground: 210 40% 98%;-->
+<!--            &#45;&#45;card: 222.2 84% 4.9%;-->
+<!--            &#45;&#45;card-foreground: 210 40% 98%;-->
+<!--            &#45;&#45;popover: 222.2 84% 4.9%;-->
+<!--            &#45;&#45;popover-foreground: 210 40% 98%;-->
+<!--            &#45;&#45;primary: 220 90% 56%;-->
+<!--            &#45;&#45;primary-foreground: 222.2 84% 4.9%;-->
+<!--            &#45;&#45;secondary: 217.2 32.6% 17.5%;-->
+<!--            &#45;&#45;secondary-foreground: 210 40% 98%;-->
+<!--            &#45;&#45;muted: 217.2 32.6% 17.5%;-->
+<!--            &#45;&#45;muted-foreground: 215 20.2% 65.1%;-->
+<!--            &#45;&#45;accent: 217.2 32.6% 17.5%;-->
+<!--            &#45;&#45;accent-foreground: 210 40% 98%;-->
+<!--            &#45;&#45;border: 217.2 32.6% 17.5%;-->
+<!--            &#45;&#45;input: 217.2 32.6% 17.5%;-->
+<!--            &#45;&#45;ring: 220 90% 56%;-->
+<!--        }-->
+<!--        .btn-primary {-->
+<!--            background: var(&#45;&#45;gradient-primary);-->
+<!--            color: hsl(var(&#45;&#45;primary-foreground));-->
+<!--            border: none;-->
+<!--            padding: 0.75rem 1.5rem;-->
+<!--            border-radius: 0.5rem;-->
+<!--            font-weight: 500;-->
+<!--            transition: var(&#45;&#45;transition-base);-->
+<!--            box-shadow: var(&#45;&#45;shadow-md);-->
+<!--        }-->
+<!--        .btn-primary:hover {-->
+<!--            transform: translateY(-1px);-->
+<!--            box-shadow: var(&#45;&#45;shadow-lg), var(&#45;&#45;shadow-glow);-->
+<!--        }-->
+<!--        .card {-->
+<!--            background: hsl(var(&#45;&#45;card));-->
+<!--            border: 1px solid hsl(var(&#45;&#45;border));-->
+<!--            border-radius: 0.75rem;-->
+<!--            padding: 1.5rem;-->
+<!--            box-shadow: var(&#45;&#45;shadow-sm);-->
+<!--            transition: var(&#45;&#45;transition-smooth);-->
+<!--        }-->
+<!--        .card:hover {-->
+<!--            box-shadow: var(&#45;&#45;shadow-md);-->
+<!--            transform: translateY(-2px);-->
+<!--        }-->
+<!--        .input {-->
+<!--            background: hsl(var(&#45;&#45;background));-->
+<!--            border: 1px solid hsl(var(&#45;&#45;border));-->
+<!--            border-radius: 0.5rem;-->
+<!--            padding: 0.75rem 1rem;-->
+<!--            width: 100%;-->
+<!--            transition: var(&#45;&#45;transition-base);-->
+<!--        }-->
+<!--        .input:focus {-->
+<!--            outline: none;-->
+<!--            border-color: hsl(var(&#45;&#45;primary));-->
+<!--            box-shadow: 0 0 0 3px hsl(var(&#45;&#45;primary) / 0.1);-->
+<!--        }-->
+<!--        .badge {-->
+<!--            display: inline-flex;-->
+<!--            align-items: center;-->
+<!--            border-radius: 9999px;-->
+<!--            padding: 0.25rem 0.75rem;-->
+<!--            font-size: 0.75rem;-->
+<!--            font-weight: 500;-->
+<!--            transition: var(&#45;&#45;transition-base);-->
+<!--        }-->
+<!--        .badge-success {-->
+<!--            background: hsl(var(&#45;&#45;success) / 0.1);-->
+<!--            color: hsl(var(&#45;&#45;success));-->
+<!--        }-->
+<!--        .badge-warning {-->
+<!--            background: hsl(var(&#45;&#45;warning) / 0.1);-->
+<!--            color: hsl(var(&#45;&#45;warning));-->
+<!--        }-->
+<!--        .badge-destructive {-->
+<!--            background: hsl(var(&#45;&#45;destructive) / 0.1);-->
+<!--            color: hsl(var(&#45;&#45;destructive));-->
+<!--        }-->
+<!--        .loading {-->
+<!--            animation: spin 1s linear infinite;-->
+<!--        }-->
+<!--        @keyframes spin {-->
+<!--            from { transform: rotate(0deg); }-->
+<!--            to { transform: rotate(360deg); }-->
+<!--        }-->
+<!--        .fade-in {-->
+<!--            animation: fadeIn 0.3s ease-out;-->
+<!--        }-->
+<!--        @keyframes fadeIn {-->
+<!--            from { opacity: 0; transform: translateY(10px); }-->
+<!--            to { opacity: 1; transform: translateY(0); }-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body class="bg-background text-foreground">-->
+<!--    <div class="min-h-screen">-->
+<!--        &lt;!&ndash; Header &ndash;&gt;-->
+<!--        <header class="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">-->
+<!--            <div class="container mx-auto px-4 py-4">-->
+<!--                <h1 class="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">-->
+<!--                    SEO Keyword Research Tool-->
+<!--                </h1>-->
+<!--                <p class="text-muted-foreground mt-2">Analyze keywords and SERP data for your SEO strategy</p>-->
+<!--            </div>-->
+<!--        </header>-->
+
+<!--        &lt;!&ndash; Main Content &ndash;&gt;-->
+<!--        <main class="container mx-auto px-4 py-8">-->
+<!--            &lt;!&ndash; Search Section &ndash;&gt;-->
+<!--            <div class="card mb-8">-->
+<!--                <h2 class="text-xl font-semibold mb-4">Keyword Research</h2>-->
+<!--                <div class="flex flex-col sm:flex-row gap-4 mb-4">-->
+<!--                    <input-->
+<!--                        type="text"-->
+<!--                        id="keywordInput"-->
+<!--                        placeholder="Enter seed keyword (e.g., web development)"-->
+<!--                        class="input flex-1"-->
+<!--                    >-->
+<!--                    <select id="countrySelect" class="input w-full sm:w-40">-->
+<!--                        <option value="us">US</option>-->
+<!--                        <option value="uk">UK</option>-->
+<!--                        <option value="ca">CA</option>-->
+<!--                        <option value="au">AU</option>-->
+<!--                    </select>-->
+<!--                    <button-->
+<!--                        onclick="searchKeywords()"-->
+<!--                        class="btn-primary"-->
+<!--                        id="searchBtn"-->
+<!--                    >-->
+<!--                        Search Keywords-->
+<!--                    </button>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; Filters &ndash;&gt;-->
+<!--                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">-->
+<!--                    <div>-->
+<!--                        <label class="block text-sm font-medium mb-2">Search Volume</label>-->
+<!--                        <select id="volumeFilter" class="input">-->
+<!--                            <option value="">All Volumes</option>-->
+<!--                            <option value="high">High (1000+)</option>-->
+<!--                            <option value="medium">Medium (100-1000)</option>-->
+<!--                            <option value="low">Low (0-100)</option>-->
+<!--                        </select>-->
+<!--                    </div>-->
+<!--                    <div>-->
+<!--                        <label class="block text-sm font-medium mb-2">Difficulty</label>-->
+<!--                        <select id="difficultyFilter" class="input">-->
+<!--                            <option value="">All Difficulty</option>-->
+<!--                            <option value="easy">Easy (0-30)</option>-->
+<!--                            <option value="medium">Medium (31-70)</option>-->
+<!--                            <option value="hard">Hard (71-100)</option>-->
+<!--                        </select>-->
+<!--                    </div>-->
+<!--                    <div>-->
+<!--                        <label class="block text-sm font-medium mb-2">Intent</label>-->
+<!--                        <select id="intentFilter" class="input">-->
+<!--                            <option value="">All Intent</option>-->
+<!--                            <option value="unknown">Unknown</option>-->
+<!--                        </select>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Results Section &ndash;&gt;-->
+<!--            <div class="card">-->
+<!--                <div class="flex items-center justify-between mb-6">-->
+<!--                    <h2 class="text-xl font-semibold">Keyword Results</h2>-->
+<!--                    <div id="resultsCount" class="text-sm text-muted-foreground"></div>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; Summary &ndash;&gt;-->
+<!--                <div id="keywordSummary" class="hidden mb-6 p-4 bg-muted/50 rounded-lg">-->
+<!--                    <h3 class="text-lg font-medium mb-2">Keyword: <span id="keywordName"></span></h3>-->
+<!--                    <div class="flex flex-wrap gap-4">-->
+<!--                        <div>-->
+<!--                            <span class="text-sm text-muted-foreground">Difficulty</span>-->
+<!--                            <div class="text-lg font-bold"><span id="keywordDifficulty"></span>/100</div>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <span class="text-sm text-muted-foreground">Search Volume</span>-->
+<!--                            <div class="text-lg font-bold"><span id="keywordVolume"></span></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; Loading State &ndash;&gt;-->
+<!--                <div id="loadingState" class="hidden text-center py-8">-->
+<!--                    <div class="loading w-8 h-8 border-2 border-primary border-t-transparent rounded-full mx-auto mb-4"></div>-->
+<!--                    <p class="text-muted-foreground">Analyzing keywords...</p>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; Empty State &ndash;&gt;-->
+<!--                <div id="emptyState" class="text-center py-12">-->
+<!--                    <div class="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">-->
+<!--                        <svg class="w-8 h-8 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">-->
+<!--                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>-->
+<!--                        </svg>-->
+<!--                    </div>-->
+<!--                    <h3 class="text-lg font-medium mb-2">No keywords found</h3>-->
+<!--                    <p class="text-muted-foreground">Enter a seed keyword to start your research</p>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; Results Table &ndash;&gt;-->
+<!--                <div id="resultsTable" class="hidden">-->
+<!--                    <div class="overflow-x-auto">-->
+<!--                        <table class="w-full table-auto">-->
+<!--                            <thead>-->
+<!--                                <tr class="border-b border-border">-->
+<!--                                    <th class="text-left py-3 px-4 font-medium">Position</th>-->
+<!--                                    <th class="text-left py-3 px-4 font-medium">Title</th>-->
+<!--                                    <th class="text-left py-3 px-4 font-medium">URL</th>-->
+<!--                                    <th class="text-left py-3 px-4 font-medium cursor-pointer" onclick="sortResults('dr')">-->
+<!--                                        DR <span id="drSort">↕</span>-->
+<!--                                    </th>-->
+<!--                                    <th class="text-left py-3 px-4 font-medium cursor-pointer" onclick="sortResults('traffic')">-->
+<!--                                        Traffic <span id="trafficSort">↕</span>-->
+<!--                                    </th>-->
+<!--                                    <th class="text-left py-3 px-4 font-medium">Cost</th>-->
+<!--                                    <th class="text-left py-3 px-4 font-medium">Words</th>-->
+<!--                                    <th class="text-left py-3 px-4 font-medium">Actions</th>-->
+<!--                                </tr>-->
+<!--                            </thead>-->
+<!--                            <tbody id="resultsBody">-->
+<!--                                &lt;!&ndash; Results will be inserted here &ndash;&gt;-->
+<!--                            </tbody>-->
+<!--                        </table>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Saved Keywords &ndash;&gt;-->
+<!--            <div class="card mt-8">-->
+<!--                <h2 class="text-xl font-semibold mb-4">Saved Keywords</h2>-->
+<!--                <div id="savedKeywords" class="space-y-2">-->
+<!--                    <p class="text-muted-foreground">No saved keywords yet. Start saving keywords from your research!</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </main>-->
+<!--    </div>-->
+
+<!--    <script>-->
+<!--        let currentResults = [];-->
+<!--        let savedKeywordsList = JSON.parse(localStorage.getItem('savedKeywords') || '[]');-->
+<!--        let sortConfig = { key: null, direction: 'asc' };-->
+
+<!--        async function searchKeywords() {-->
+<!--            const keyword = document.getElementById('keywordInput').value.trim();-->
+<!--            const country = document.getElementById('countrySelect').value;-->
+<!--            if (!keyword) {-->
+<!--                alert('Please enter a keyword');-->
+<!--                return;-->
+<!--            }-->
+
+<!--            // Show loading state-->
+<!--            document.getElementById('loadingState').classList.remove('hidden');-->
+<!--            document.getElementById('emptyState').classList.add('hidden');-->
+<!--            document.getElementById('resultsTable').classList.add('hidden');-->
+<!--            document.getElementById('keywordSummary').classList.add('hidden');-->
+<!--            document.getElementById('searchBtn').disabled = true;-->
+
+<!--            try {-->
+<!--                const response = await fetch('/api/keyword-difficulty', {-->
+<!--                    method: 'POST',-->
+<!--                    headers: { 'Content-Type': 'application/json' },-->
+<!--                    body: JSON.stringify({ keyword, country })-->
+<!--                });-->
+<!--                const data = await response.json();-->
+
+<!--                if (response.ok && data.ok) {-->
+<!--                    currentResults = data.serp.map(row => ({-->
+<!--                        keyword: data.keyword,-->
+<!--                        volume: row.traffic || 0,-->
+<!--                        difficulty: data.difficulty,-->
+<!--                        intent: 'unknown',-->
+<!--                        position: row.pos,-->
+<!--                        title: row.title || 'N/A',-->
+<!--                        url: row.url || '#',-->
+<!--                        dr: row.dr || 0,-->
+<!--                        traffic: row.traffic || 0,-->
+<!--                        cost: row.cost || 0,-->
+<!--                        words: row.words || 0-->
+<!--                    }));-->
+
+<!--                    // Update summary-->
+<!--                    document.getElementById('keywordName').textContent = data.keyword;-->
+<!--                    document.getElementById('keywordDifficulty').textContent = data.difficulty;-->
+<!--                    document.getElementById('keywordVolume').textContent = data.shortage ? data.shortage.toLocaleString() : 'N/A';-->
+<!--                    document.getElementById('keywordSummary').classList.remove('hidden');-->
+
+<!--                    displayResults();-->
+<!--                } else {-->
+<!--                    throw new Error(data.error || 'Failed to fetch keyword data');-->
+<!--                }-->
+<!--            } catch (error) {-->
+<!--                alert(`Error: ${error.message}`);-->
+<!--                document.getElementById('emptyState').classList.remove('hidden');-->
+<!--            } finally {-->
+<!--                document.getElementById('loadingState').classList.add('hidden');-->
+<!--                document.getElementById('searchBtn').disabled = false;-->
+<!--            }-->
+<!--        }-->
+
+<!--        function displayResults() {-->
+<!--            const resultsBody = document.getElementById('resultsBody');-->
+<!--            const resultsCount = document.getElementById('resultsCount');-->
+<!--            const resultsTable = document.getElementById('resultsTable');-->
+<!--            const emptyState = document.getElementById('emptyState');-->
+
+<!--            let filteredResults = applyFilters(currentResults);-->
+
+<!--            if (filteredResults.length === 0) {-->
+<!--                resultsTable.classList.add('hidden');-->
+<!--                emptyState.classList.remove('hidden');-->
+<!--                resultsCount.textContent = '0 results found';-->
+<!--                return;-->
+<!--            }-->
+
+<!--            resultsCount.textContent = `${filteredResults.length} results found`;-->
+<!--            resultsTable.classList.remove('hidden');-->
+<!--            emptyState.classList.add('hidden');-->
+
+<!--            resultsBody.innerHTML = filteredResults.map(row => `-->
+<!--                <tr class="border-b border-border hover:bg-muted/50 fade-in">-->
+<!--                    <td class="py-3 px-4 font-medium">${row.position || 'N/A'}</td>-->
+<!--                    <td class="py-3 px-4">${row.title}</td>-->
+<!--                    <td class="py-3 px-4">-->
+<!--                        <a href="${row.url}" target="_blank" class="text-primary hover:underline truncate max-w-xs block">${row.url}</a>-->
+<!--                    </td>-->
+<!--                    <td class="py-3 px-4">${row.dr || 'N/A'}</td>-->
+<!--                    <td class="py-3 px-4">${row.traffic ? row.traffic.toLocaleString() : 'N/A'}</td>-->
+<!--                    <td class="py-3 px-4">${row.cost ? row.cost.toLocaleString() : 'N/A'}</td>-->
+<!--                    <td class="py-3 px-4">${row.words ? row.words.toLocaleString() : 'N/A'}</td>-->
+<!--                    <td class="py-3 px-4">-->
+<!--                        <button-->
+<!--                            onclick="saveKeyword('${row.keyword}')"-->
+<!--                            class="text-primary hover:text-primary-foreground hover:bg-primary px-3 py-1 rounded text-sm transition-colors"-->
+<!--                            ${savedKeywordsList.includes(row.keyword) ? 'disabled' : ''}-->
+<!--                        >-->
+<!--                            ${savedKeywordsList.includes(row.keyword) ? 'Saved' : 'Save'}-->
+<!--                        </button>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--            `).join('');-->
+<!--        }-->
+
+<!--        function applyFilters(results) {-->
+<!--            const volumeFilter = document.getElementById('volumeFilter').value;-->
+<!--            const difficultyFilter = document.getElementById('difficultyFilter').value;-->
+<!--            const intentFilter = document.getElementById('intentFilter').value;-->
+
+<!--            return results.filter(row => {-->
+<!--                if (volumeFilter) {-->
+<!--                    if (volumeFilter === 'high' && row.traffic < 1000) return false;-->
+<!--                    if (volumeFilter === 'medium' && (row.traffic < 100 || row.traffic > 1000)) return false;-->
+<!--                    if (volumeFilter === 'low' && row.traffic > 100) return false;-->
+<!--                }-->
+<!--                if (difficultyFilter) {-->
+<!--                    if (difficultyFilter === 'easy' && row.difficulty > 30) return false;-->
+<!--                    if (difficultyFilter === 'medium' && (row.difficulty < 31 || row.difficulty > 70)) return false;-->
+<!--                    if (difficultyFilter === 'hard' && row.difficulty < 71) return false;-->
+<!--                }-->
+<!--                if (intentFilter && row.intent !== intentFilter) return false;-->
+<!--                return true;-->
+<!--            });-->
+<!--        }-->
+
+<!--        function sortResults(key) {-->
+<!--            const direction = sortConfig.key === key && sortConfig.direction === 'asc' ? 'desc' : 'asc';-->
+<!--            sortConfig = { key, direction };-->
+
+<!--            currentResults.sort((a, b) => {-->
+<!--                const valA = a[key] || 0;-->
+<!--                const valB = b[key] || 0;-->
+<!--                return direction === 'asc' ? valA - valB : valB - valA;-->
+<!--            });-->
+
+<!--            document.querySelectorAll('[id$="Sort"]').forEach(el => el.textContent = '↕');-->
+<!--            document.getElementById(key + 'Sort').textContent = direction === 'asc' ? '↑' : '↓';-->
+<!--            displayResults();-->
+<!--        }-->
+
+<!--        function saveKeyword(keyword) {-->
+<!--            if (!savedKeywordsList.includes(keyword)) {-->
+<!--                savedKeywordsList.push(keyword);-->
+<!--                localStorage.setItem('savedKeywords', JSON.stringify(savedKeywordsList));-->
+<!--                displaySavedKeywords();-->
+<!--                displayResults();-->
+<!--            }-->
+<!--        }-->
+
+<!--        function removeKeyword(keyword) {-->
+<!--            savedKeywordsList = savedKeywordsList.filter(k => k !== keyword);-->
+<!--            localStorage.setItem('savedKeywords', JSON.stringify(savedKeywordsList));-->
+<!--            displaySavedKeywords();-->
+<!--            displayResults();-->
+<!--        }-->
+
+<!--        function displaySavedKeywords() {-->
+<!--            const savedContainer = document.getElementById('savedKeywords');-->
+<!--            if (savedKeywordsList.length === 0) {-->
+<!--                savedContainer.innerHTML = '<p class="text-muted-foreground">No saved keywords yet. Start saving keywords from your research!</p>';-->
+<!--                return;-->
+<!--            }-->
+<!--            savedContainer.innerHTML = savedKeywordsList.map(keyword => `-->
+<!--                <div class="flex items-center justify-between bg-muted/50 rounded-lg p-3">-->
+<!--                    <span class="font-medium">${keyword}</span>-->
+<!--                    <button-->
+<!--                        onclick="removeKeyword('${keyword}')"-->
+<!--                        class="text-destructive hover:bg-destructive hover:text-destructive-foreground px-2 py-1 rounded text-sm transition-colors"-->
+<!--                    >-->
+<!--                        Remove-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            `).join('');-->
+<!--        }-->
+
+<!--        // Event listeners-->
+<!--        document.getElementById('keywordInput').addEventListener('keypress', function(e) {-->
+<!--            if (e.key === 'Enter') searchKeywords();-->
+<!--        });-->
+<!--        document.getElementById('volumeFilter').addEventListener('change', displayResults);-->
+<!--        document.getElementById('difficultyFilter').addEventListener('change', displayResults);-->
+<!--        document.getElementById('intentFilter').addEventListener('change', displayResults);-->
+
+<!--        // Initialize-->
+<!--        displaySavedKeywords();-->
+<!--    </script>-->
+<!--</body>-->
+<!--&lt;!&ndash;</html>&ndash;&gt;-->
+
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>SEO Keyword Research Tool</title>-->
+<!--    <script src="https://cdn.tailwindcss.com"></script>-->
+<!--    <style>-->
+<!--        :root {-->
+<!--            &#45;&#45;primary: 220 90% 56%;-->
+<!--            &#45;&#45;primary-foreground: 0 0% 100%;-->
+<!--            &#45;&#45;primary-glow: 220 100% 70%;-->
+<!--            &#45;&#45;secondary: 210 40% 98%;-->
+<!--            &#45;&#45;secondary-foreground: 222.2 84% 4.9%;-->
+<!--            &#45;&#45;accent: 210 40% 96%;-->
+<!--            &#45;&#45;accent-foreground: 222.2 84% 4.9%;-->
+<!--            &#45;&#45;muted: 210 40% 96%;-->
+<!--            &#45;&#45;muted-foreground: 215.4 16.3% 46.9%;-->
+<!--            &#45;&#45;destructive: 0 84.2% 60.2%;-->
+<!--            &#45;&#45;destructive-foreground: 210 40% 98%;-->
+<!--            &#45;&#45;success: 142 76% 36%;-->
+<!--            &#45;&#45;success-foreground: 355.7 100% 97.3%;-->
+<!--            &#45;&#45;warning: 38 92% 50%;-->
+<!--            &#45;&#45;warning-foreground: 48 96% 89%;-->
+<!--            &#45;&#45;background: 0 0% 100%;-->
+<!--            &#45;&#45;foreground: 222.2 84% 4.9%;-->
+<!--            &#45;&#45;card: 0 0% 100%;-->
+<!--            &#45;&#45;card-foreground: 222.2 84% 4.9%;-->
+<!--            &#45;&#45;popover: 0 0% 100%;-->
+<!--            &#45;&#45;popover-foreground: 222.2 84% 4.9%;-->
+<!--            &#45;&#45;border: 214.3 31.8% 91.4%;-->
+<!--            &#45;&#45;input: 214.3 31.8% 91.4%;-->
+<!--            &#45;&#45;ring: 220 90% 56%;-->
+<!--            &#45;&#45;gradient-primary: linear-gradient(135deg, hsl(var(&#45;&#45;primary)), hsl(var(&#45;&#45;primary-glow)));-->
+<!--            &#45;&#45;gradient-hero: linear-gradient(135deg, hsl(var(&#45;&#45;primary)) 0%, hsl(var(&#45;&#45;primary-glow)) 100%);-->
+<!--            &#45;&#45;gradient-card: linear-gradient(145deg, hsl(var(&#45;&#45;card)) 0%, hsl(var(&#45;&#45;accent)) 100%);-->
+<!--            &#45;&#45;shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);-->
+<!--            &#45;&#45;shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);-->
+<!--            &#45;&#45;shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);-->
+<!--            &#45;&#45;shadow-glow: 0 0 20px hsl(var(&#45;&#45;primary) / 0.3);-->
+<!--            &#45;&#45;transition-base: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);-->
+<!--            &#45;&#45;transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);-->
+<!--        }-->
+<!--        .dark {-->
+<!--            &#45;&#45;background: 222.2 84% 4.9%;-->
+<!--            &#45;&#45;foreground: 210 40% 98%;-->
+<!--            &#45;&#45;card: 222.2 84% 4.9%;-->
+<!--            &#45;&#45;card-foreground: 210 40% 98%;-->
+<!--            &#45;&#45;popover: 222.2 84% 4.9%;-->
+<!--            &#45;&#45;popover-foreground: 210 40% 98%;-->
+<!--            &#45;&#45;primary: 220 90% 56%;-->
+<!--            &#45;&#45;primary-foreground: 222.2 84% 4.9%;-->
+<!--            &#45;&#45;secondary: 217.2 32.6% 17.5%;-->
+<!--            &#45;&#45;secondary-foreground: 210 40% 98%;-->
+<!--            &#45;&#45;muted: 217.2 32.6% 17.5%;-->
+<!--            &#45;&#45;muted-foreground: 215 20.2% 65.1%;-->
+<!--            &#45;&#45;accent: 217.2 32.6% 17.5%;-->
+<!--            &#45;&#45;accent-foreground: 210 40% 98%;-->
+<!--            &#45;&#45;border: 217.2 32.6% 17.5%;-->
+<!--            &#45;&#45;input: 217.2 32.6% 17.5%;-->
+<!--            &#45;&#45;ring: 220 90% 56%;-->
+<!--        }-->
+<!--        .btn-primary {-->
+<!--            background: var(&#45;&#45;gradient-primary);-->
+<!--            color: hsl(var(&#45;&#45;primary-foreground));-->
+<!--            border: none;-->
+<!--            padding: 0.75rem 1.5rem;-->
+<!--            border-radius: 0.5rem;-->
+<!--            font-weight: 500;-->
+<!--            transition: var(&#45;&#45;transition-base);-->
+<!--            box-shadow: var(&#45;&#45;shadow-md);-->
+<!--        }-->
+<!--        .btn-primary:hover {-->
+<!--            transform: translateY(-1px);-->
+<!--            box-shadow: var(&#45;&#45;shadow-lg), var(&#45;&#45;shadow-glow);-->
+<!--        }-->
+<!--        .card {-->
+<!--            background: hsl(var(&#45;&#45;card));-->
+<!--            border: 1px solid hsl(var(&#45;&#45;border));-->
+<!--            border-radius: 0.75rem;-->
+<!--            padding: 1.5rem;-->
+<!--            box-shadow: var(&#45;&#45;shadow-sm);-->
+<!--            transition: var(&#45;&#45;transition-smooth);-->
+<!--        }-->
+<!--        .card:hover {-->
+<!--            box-shadow: var(&#45;&#45;shadow-md);-->
+<!--            transform: translateY(-2px);-->
+<!--        }-->
+<!--        .input {-->
+<!--            background: hsl(var(&#45;&#45;background));-->
+<!--            border: 1px solid hsl(var(&#45;&#45;border));-->
+<!--            border-radius: 0.5rem;-->
+<!--            padding: 0.75rem 1rem;-->
+<!--            width: 100%;-->
+<!--            transition: var(&#45;&#45;transition-base);-->
+<!--        }-->
+<!--        .input:focus {-->
+<!--            outline: none;-->
+<!--            border-color: hsl(var(&#45;&#45;primary));-->
+<!--            box-shadow: 0 0 0 3px hsl(var(&#45;&#45;primary) / 0.1);-->
+<!--        }-->
+<!--        .metric-card {-->
+<!--            background: hsl(var(&#45;&#45;accent));-->
+<!--            border-radius: 0.5rem;-->
+<!--            padding: 1rem;-->
+<!--            text-align: center;-->
+<!--            transition: var(&#45;&#45;transition-smooth);-->
+<!--            box-shadow: var(&#45;&#45;shadow-sm);-->
+<!--        }-->
+<!--        .metric-card:hover {-->
+<!--            background: hsl(var(&#45;&#45;primary) / 0.1);-->
+<!--            transform: translateY(-2px);-->
+<!--            box-shadow: var(&#45;&#45;shadow-md);-->
+<!--        }-->
+<!--        .loading {-->
+<!--            animation: spin 1s linear infinite;-->
+<!--        }-->
+<!--        @keyframes spin {-->
+<!--            from { transform: rotate(0deg); }-->
+<!--            to { transform: rotate(360deg); }-->
+<!--        }-->
+<!--        .fade-in {-->
+<!--            animation: fadeIn 0.3s ease-out;-->
+<!--        }-->
+<!--        @keyframes fadeIn {-->
+<!--            from { opacity: 0; transform: translateY(10px); }-->
+<!--            to { opacity: 1; transform: translateY(0); }-->
+<!--        }-->
+<!--        @media (max-width: 640px) {-->
+<!--            .search-section .flex-col {-->
+<!--                flex-direction: column;-->
+<!--                gap: 1rem;-->
+<!--            }-->
+<!--            .search-section button {-->
+<!--                width: 100%;-->
+<!--            }-->
+<!--            .results-table {-->
+<!--                overflow-x: auto;-->
+<!--            }-->
+<!--            .results-table table {-->
+<!--                min-width: 600px;-->
+<!--            }-->
+<!--            .metric-grid {-->
+<!--                grid-template-columns: 1fr;-->
+<!--                gap: 1rem;-->
+<!--            }-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body class="bg-background text-foreground min-h-screen">-->
+<!--    <div class="container mx-auto px-4 py-8">-->
+<!--        &lt;!&ndash; Header &ndash;&gt;-->
+<!--        <header class="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 mb-8 text-center">-->
+<!--            <h1 class="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">-->
+<!--                SEO Keyword Research Tool-->
+<!--            </h1>-->
+<!--            <p class="text-muted-foreground mt-2">Analyze keywords and metrics for your SEO strategy</p>-->
+<!--        </header>-->
+
+<!--        &lt;!&ndash; Main Content &ndash;&gt;-->
+<!--        <main>-->
+<!--            &lt;!&ndash; Search Section &ndash;&gt;-->
+<!--            <div class="card mb-8 search-section">-->
+<!--                <h2 class="text-xl font-semibold mb-4">Keyword Research</h2>-->
+<!--                <div class="flex flex-col sm:flex-row gap-4 mb-4">-->
+<!--                    <input-->
+<!--                        type="text"-->
+<!--                        id="keywordInput"-->
+<!--                        placeholder="Enter seed keyword (e.g., web development)"-->
+<!--                        class="input flex-1"-->
+<!--                        style="min-width: 200px;"-->
+<!--                    >-->
+<!--                    <select id="countrySelect" class="input w-full sm:w-40">-->
+<!--                        <option value="us">US</option>-->
+<!--                        <option value="uk">UK</option>-->
+<!--                        <option value="ca">CA</option>-->
+<!--                        <option value="au">AU</option>-->
+<!--                    </select>-->
+<!--                    <button-->
+<!--                        onclick="searchKeywords()"-->
+<!--                        class="btn-primary w-full sm:w-auto"-->
+<!--                        id="searchBtn"-->
+<!--                    >-->
+<!--                        Search Keywords-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Results Section &ndash;&gt;-->
+<!--            <div class="card">-->
+<!--                <div class="flex items-center justify-between mb-6">-->
+<!--                    <h2 class="text-xl font-semibold">Keyword Results</h2>-->
+<!--                    <div id="resultsCount" class="text-sm text-muted-foreground"></div>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; Summary &ndash;&gt;-->
+<!--                <div id="keywordSummary" class="hidden mb-6">-->
+<!--                    <h3 class="text-lg font-medium mb-4">Keyword: <span id="keywordName" class="text-primary font-bold"></span></h3>-->
+<!--                    <div class="metric-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">-->
+<!--                        <div class="metric-card">-->
+<!--                            <span class="text-sm text-muted-foreground">Difficulty</span>-->
+<!--                            <div class="text-xl font-bold text-primary"><span id="keywordDifficulty"></span>/100</div>-->
+<!--                        </div>-->
+<!--                        <div class="metric-card">-->
+<!--                            <span class="text-sm text-muted-foreground">Search Volume</span>-->
+<!--                            <div class="text-xl font-bold text-success"><span id="keywordSearchVolume"></span></div>-->
+<!--                        </div>-->
+<!--                        <div class="metric-card">-->
+<!--                            <span class="text-sm text-muted-foreground">Clicks</span>-->
+<!--                            <div class="text-xl font-bold text-warning"><span id="keywordClicks"></span></div>-->
+<!--                        </div>-->
+<!--                        <div class="metric-card">-->
+<!--                            <span class="text-sm text-muted-foreground">CPC</span>-->
+<!--                            <div class="text-xl font-bold text-accent-foreground"><span id="keywordCpc"></span> USD</div>-->
+<!--                        </div>-->
+<!--                        <div class="metric-card">-->
+<!--                            <span class="text-sm text-muted-foreground">Global Volume</span>-->
+<!--                            <div class="text-xl font-bold text-primary"><span id="keywordGlobalVolume"></span></div>-->
+<!--                        </div>-->
+<!--                        <div class="metric-card">-->
+<!--                            <span class="text-sm text-muted-foreground">Traffic Potential</span>-->
+<!--                            <div class="text-xl font-bold text-success"><span id="keywordTrafficPotential"></span></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; Loading State &ndash;&gt;-->
+<!--                <div id="loadingState" class="hidden text-center py-8">-->
+<!--                    <div class="loading w-12 h-12 border-4 border-primary border-t-transparent rounded-full mx-auto mb-4"></div>-->
+<!--                    <p class="text-muted-foreground">Analyzing keywords...</p>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; Empty State &ndash;&gt;-->
+<!--                <div id="emptyState" class="text-center py-12">-->
+<!--                    <div class="w-24 h-24 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">-->
+<!--                        <svg class="w-12 h-12 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">-->
+<!--                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>-->
+<!--                        </svg>-->
+<!--                    </div>-->
+<!--                    <h3 class="text-lg font-medium mb-2">No keywords found</h3>-->
+<!--                    <p class="text-muted-foreground">Enter a seed keyword to start your research</p>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; Results Table &ndash;&gt;-->
+<!--                <div id="resultsTable" class="hidden results-table">-->
+<!--                    <div class="overflow-x-auto">-->
+<!--                        <div id="resultsBody" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">-->
+<!--                            &lt;!&ndash; Results will be inserted here as cards &ndash;&gt;-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Saved Keywords &ndash;&gt;-->
+<!--            <div class="card mt-8">-->
+<!--                <h2 class="text-xl font-semibold mb-4">Saved Keywords</h2>-->
+<!--                <div id="savedKeywords" class="space-y-2">-->
+<!--                    <p class="text-muted-foreground">No saved keywords yet. Start saving keywords from your research!</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </main>-->
+<!--    </div>-->
+
+<!--    <script>-->
+<!--        let currentResults = [];-->
+<!--        let savedKeywordsList = JSON.parse(localStorage.getItem('savedKeywords') || '[]');-->
+<!--        let sortConfig = { key: null, direction: 'asc' };-->
+
+<!--        async function searchKeywords() {-->
+<!--            const keyword = document.getElementById('keywordInput').value.trim();-->
+<!--            const country = document.getElementById('countrySelect').value;-->
+<!--            if (!keyword) {-->
+<!--                alert('Please enter a keyword');-->
+<!--                return;-->
+<!--            }-->
+
+<!--            document.getElementById('loadingState').classList.remove('hidden');-->
+<!--            document.getElementById('emptyState').classList.add('hidden');-->
+<!--            document.getElementById('resultsTable').classList.add('hidden');-->
+<!--            document.getElementById('keywordSummary').classList.add('hidden');-->
+<!--            document.getElementById('searchBtn').disabled = true;-->
+
+<!--            try {-->
+<!--                const response = await fetch('/api/keyword-difficulty', {-->
+<!--                    method: 'POST',-->
+<!--                    headers: { 'Content-Type': 'application/json' },-->
+<!--                    body: JSON.stringify({ keyword, country })-->
+<!--                });-->
+<!--                const data = await response.json();-->
+
+<!--                if (response.ok && data.ok) {-->
+<!--                    // Update summary with all metrics-->
+<!--                    document.getElementById('keywordName').textContent = data.keyword || 'N/A';-->
+<!--                    document.getElementById('keywordDifficulty').textContent = data.difficulty || 'N/A';-->
+<!--                    document.getElementById('keywordSearchVolume').textContent = data.shortage ? data.shortage.toLocaleString() : 'N/A';-->
+<!--                    document.getElementById('keywordClicks').textContent = data.clicks ? data.clicks.toLocaleString() : 'N/A';-->
+<!--                    document.getElementById('keywordCpc').textContent = data.cpc ? data.cpc.toFixed(2) : 'N/A';-->
+<!--                    document.getElementById('keywordGlobalVolume').textContent = data.globalVolume ? data.globalVolume.toLocaleString() : 'N/A';-->
+<!--                    document.getElementById('keywordTrafficPotential').textContent = data.trafficPotential ? data.trafficPotential.toLocaleString() : 'N/A';-->
+<!--                    document.getElementById('keywordSummary').classList.remove('hidden');-->
+
+<!--                    // Handle SERP data (empty for now based on your test)-->
+<!--                    currentResults = data.serp && data.serp.length > 0 ? data.serp.map(row => ({-->
+<!--                        keyword: data.keyword || 'N/A',-->
+<!--                        difficulty: data.difficulty || 'N/A',-->
+<!--                        searchVolume: data.shortage || 'N/A',-->
+<!--                        clicks: data.clicks || 'N/A',-->
+<!--                        cpc: data.cpc || 'N/A',-->
+<!--                        globalVolume: data.globalVolume || 'N/A',-->
+<!--                        trafficPotential: data.trafficPotential || 'N/A',-->
+<!--                        position: row.pos || 'N/A',-->
+<!--                        title: row.title || 'N/A',-->
+<!--                        url: row.url || '#',-->
+<!--                        dr: row.dr || 'N/A',-->
+<!--                        traffic: row.traffic || 'N/A'-->
+<!--                    })) : [];-->
+
+<!--                    displayResults();-->
+<!--                } else {-->
+<!--                    throw new Error(data.error || 'Failed to fetch keyword data');-->
+<!--                }-->
+<!--            } catch (error) {-->
+<!--                alert(`Error: ${error.message}`);-->
+<!--                document.getElementById('emptyState').classList.remove('hidden');-->
+<!--            } finally {-->
+<!--                document.getElementById('loadingState').classList.add('hidden');-->
+<!--                document.getElementById('searchBtn').disabled = false;-->
+<!--            }-->
+<!--        }-->
+
+<!--        function displayResults() {-->
+<!--            const resultsBody = document.getElementById('resultsBody');-->
+<!--            const resultsCount = document.getElementById('resultsCount');-->
+<!--            const resultsTable = document.getElementById('resultsTable');-->
+<!--            const emptyState = document.getElementById('emptyState');-->
+
+<!--            if (currentResults.length === 0) {-->
+<!--                resultsTable.classList.add('hidden');-->
+<!--                emptyState.classList.remove('hidden');-->
+<!--                resultsCount.textContent = '0 results found';-->
+<!--                return;-->
+<!--            }-->
+
+<!--            resultsCount.textContent = `${currentResults.length} results found`;-->
+<!--            resultsTable.classList.remove('hidden');-->
+<!--            emptyState.classList.add('hidden');-->
+
+<!--            resultsBody.innerHTML = currentResults.map(row => `-->
+<!--                <div class="metric-card p-4 bg-white dark:bg-muted rounded-lg shadow-md hover:shadow-lg transition-all duration-300">-->
+<!--                    <h4 class="text-md font-semibold text-primary mb-2">Position: ${row.position}</h4>-->
+<!--                    <p class="text-sm text-muted-foreground mb-1">Title: <span class="text-foreground">${row.title}</span></p>-->
+<!--                    <p class="text-sm text-muted-foreground mb-1">URL: <a href="${row.url}" target="_blank" class="text-blue-500 hover:underline">${row.url}</a></p>-->
+<!--                    <div class="grid grid-cols-2 gap-2 mt-2">-->
+<!--                        <div class="text-sm"><span class="font-medium">DR:</span> ${row.dr}</div>-->
+<!--                        <div class="text-sm"><span class="font-medium">Traffic:</span> ${row.traffic.toLocaleString() || 'N/A'}</div>-->
+<!--                        <div class="text-sm"><span class="font-medium">Clicks:</span> ${row.clicks.toLocaleString() || 'N/A'}</div>-->
+<!--                        <div class="text-sm"><span class="font-medium">CPC:</span> ${row.cpc.toFixed(2) || 'N/A'} USD</div>-->
+<!--                    </div>-->
+<!--                    <button-->
+<!--                        onclick="saveKeyword('${row.keyword}')"-->
+<!--                        class="mt-3 text-primary hover:text-primary-foreground hover:bg-primary px-3 py-1 rounded text-sm transition-colors"-->
+<!--                        ${savedKeywordsList.includes(row.keyword) ? 'disabled' : ''}-->
+<!--                    >-->
+<!--                        ${savedKeywordsList.includes(row.keyword) ? 'Saved' : 'Save'}-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            `).join('');-->
+<!--        }-->
+
+<!--        function saveKeyword(keyword) {-->
+<!--            if (!savedKeywordsList.includes(keyword)) {-->
+<!--                savedKeywordsList.push(keyword);-->
+<!--                localStorage.setItem('savedKeywords', JSON.stringify(savedKeywordsList));-->
+<!--                displaySavedKeywords();-->
+<!--                displayResults();-->
+<!--            }-->
+<!--        }-->
+
+<!--        function removeKeyword(keyword) {-->
+<!--            savedKeywordsList = savedKeywordsList.filter(k => k !== keyword);-->
+<!--            localStorage.setItem('savedKeywords', JSON.stringify(savedKeywordsList));-->
+<!--            displaySavedKeywords();-->
+<!--            displayResults();-->
+<!--        }-->
+
+<!--        function displaySavedKeywords() {-->
+<!--            const savedContainer = document.getElementById('savedKeywords');-->
+<!--            if (savedKeywordsList.length === 0) {-->
+<!--                savedContainer.innerHTML = '<p class="text-muted-foreground">No saved keywords yet. Start saving keywords from your research!</p>';-->
+<!--                return;-->
+<!--            }-->
+<!--            savedContainer.innerHTML = savedKeywordsList.map(keyword => `-->
+<!--                <div class="flex items-center justify-between bg-muted/50 rounded-lg p-3">-->
+<!--                    <span class="font-medium">${keyword}</span>-->
+<!--                    <button-->
+<!--                        onclick="removeKeyword('${keyword}')"-->
+<!--                        class="text-destructive hover:bg-destructive hover:text-destructive-foreground px-2 py-1 rounded text-sm transition-colors"-->
+<!--                    >-->
+<!--                        Remove-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            `).join('');-->
+<!--        }-->
+
+<!--        document.getElementById('keywordInput').addEventListener('keypress', function(e) {-->
+<!--            if (e.key === 'Enter') searchKeywords();-->
+<!--        });-->
+
+<!--        displaySavedKeywords();-->
+<!--    </script>-->
+<!--</body>-->
+<!--</html>-->
 
 
 
 
 
 
-<div class="min-h-screen">
-    <!-- Header -->
-    <header class="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div class="container mx-auto px-4 py-4">
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO Keyword Research Tool</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary: 220 90% 56%;
+            --primary-foreground: 0 0% 100%;
+            --primary-glow: 220 100% 70%;
+            --secondary: 210 40% 98%;
+            --secondary-foreground: 222.2 84% 4.9%;
+            --accent: 210 40% 96%;
+            --accent-foreground: 222.2 84% 4.9%;
+            --muted: 210 40% 96%;
+            --muted-foreground: 215.4 16.3% 46.9%;
+            --destructive: 0 84.2% 60.2%;
+            --destructive-foreground: 210 40% 98%;
+            --success: 142 76% 36%;
+            --success-foreground: 355.7 100% 97.3%;
+            --warning: 38 92% 50%;
+            --warning-foreground: 48 96% 89%;
+            --background: 0 0% 100%;
+            --foreground: 222.2 84% 4.9%;
+            --card: 0 0% 100%;
+            --card-foreground: 222.2 84% 4.9%;
+            --popover: 0 0% 100%;
+            --popover-foreground: 222.2 84% 4.9%;
+            --border: 214.3 31.8% 91.4%;
+            --input: 214.3 31.8% 91.4%;
+            --ring: 220 90% 56%;
+            --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+            --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-glow)) 100%);
+            --gradient-card: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--accent)) 100%);
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-glow: 0 0 20px hsl(var(--primary) / 0.3);
+            --transition-base: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .dark {
+            --background: 222.2 84% 4.9%;
+            --foreground: 210 40% 98%;
+            --card: 222.2 84% 4.9%;
+            --card-foreground: 210 40% 98%;
+            --popover: 222.2 84% 4.9%;
+            --popover-foreground: 210 40% 98%;
+            --primary: 220 90% 56%;
+            --primary-foreground: 222.2 84% 4.9%;
+            --secondary: 217.2 32.6% 17.5%;
+            --secondary-foreground: 210 40% 98%;
+            --muted: 217.2 32.6% 17.5%;
+            --muted-foreground: 215 20.2% 65.1%;
+            --accent: 217.2 32.6% 17.5%;
+            --accent-foreground: 210 40% 98%;
+            --border: 217.2 32.6% 17.5%;
+            --input: 217.2 32.6% 17.5%;
+            --ring: 220 90% 56%;
+        }
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: hsl(var(--primary-foreground));
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: var(--transition-base);
+            box-shadow: var(--shadow-md);
+        }
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-lg), var(--shadow-glow);
+        }
+        .card {
+            background: hsl(var(--card));
+            border: 1px solid hsl(var(--border));
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-smooth);
+        }
+        .card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+        .input, .select-custom {
+            background: hsl(var(--background));
+            border: 1px solid hsl(var(--border));
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            transition: var(--transition-base);
+        }
+        .input:focus, .select-custom:focus {
+            outline: none;
+            border-color: hsl(var(--primary));
+            box-shadow: 0 0 0 3px hsl(var(--primary) / 0.1);
+        }
+        .metric-card {
+            background: hsl(var(--accent));
+            border-radius: 0.5rem;
+            padding: 1rem;
+            text-align: center;
+            transition: var(--transition-smooth);
+            box-shadow: var(--shadow-sm);
+        }
+        .metric-card:hover {
+            background: hsl(var(--primary) / 0.1);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        .loading {
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .fade-in {
+            animation: fadeIn 0.3s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 640px) {
+            .search-section .flex-col {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .search-section button {
+                width: 100%;
+            }
+            .results-table {
+                overflow-x: auto;
+            }
+            .results-table div {
+                min-width: 600px;
+            }
+            .metric-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 mb-8 text-center">
             <h1 class="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 SEO Keyword Research Tool
             </h1>
-            <p class="text-muted-foreground mt-2">Discover high-performing keywords for your content strategy</p>
-        </div>
-    </header>
+            <p class="text-muted-foreground mt-2">Analyze keywords and metrics for your SEO strategy</p>
+        </header>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-8">
-        <!-- Search Section -->
-        <div class="card mb-8">
-            <h2 class="text-xl font-semibold mb-4">Keyword Research</h2>
-            <form id="keywordForm" method="POST" action="{{ url_for('main.dashboard', feature='keyword-research') }}">
-                <div class="flex gap-4 mb-4">
+        <!-- Main Content -->
+        <main>
+            <!-- Search Section -->
+            <div class="card mb-8 search-section">
+                <h2 class="text-xl font-semibold mb-4">Keyword Research</h2>
+                <div class="flex flex-col sm:flex-row gap-4 mb-4">
                     <input
                         type="text"
                         id="keywordInput"
-                        name="keyword"
-                        placeholder="Enter seed keyword..."
-                        class="input flex-1"
-                        value="{{ keyword|default('') }}"
+                        placeholder="Enter seed keyword (e.g., web development)"
+                        class="input flex-1 min-w-[200px]"
                     >
-                    <input type="hidden" name="country" value="us">
-                    {% for kw in saved_keywords %}
-                        <input type="hidden" name="saved_keywords" value="{{ kw|escape }}">
-                    {% endfor %}
+                    <select id="countrySelect" class="select-custom w-full sm:w-40">
+                        <option value="us">US</option>
+                        <option value="uk">UK</option>
+                        <option value="ca">CA</option>
+                        <option value="au">AU</option>
+                    </select>
                     <button
-                        type="submit"
-                        class="btn-primary"
+                        onclick="searchKeywords()"
+                        class="btn-primary w-full sm:w-auto"
                         id="searchBtn"
                     >
                         Search Keywords
                     </button>
                 </div>
-
-                <!-- Filters -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div>
-                        <label class="block text-sm font-medium mb-2">Search Volume</label>
-                        <select id="volumeFilter" class="input">
-                            <option value="">All Volumes</option>
-                            <option value="high">High (1000+)</option>
-                            <option value="medium">Medium (100-1000)</option>
-                            <option value="low">Low (0-100)</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-2">Difficulty</label>
-                        <select id="difficultyFilter" class="input">
-                            <option value="">All Difficulty</option>
-                            <option value="easy">Easy (0-30)</option>
-                            <option value="medium">Medium (31-70)</option>
-                            <option value="hard">Hard (71-100)</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-2">Intent</label>
-                        <select id="intentFilter" class="input">
-                            <option value="">All Intent</option>
-                            <option value="informational">Informational</option>
-                            <option value="commercial">Commercial</option>
-                            <option value="transactional">Transactional</option>
-                            <option value="navigational">Navigational</option>
-                        </select>
-                    </div>
-                </div>
-            </form>
-        </div>
-
-        <!-- Error Messages -->
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                    <div class="card mb-8 bg-destructive/10 text-destructive p-4 rounded-lg">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
-
-        <!-- Results Section -->
-        <div class="card">
-            <div class="flex items-center justify-between mb-6">
-                <h2 class="text-xl font-semibold">Keyword Results</h2>
-                <div id="resultsCount" class="text-sm text-muted-foreground">
-                    {{ keyword_results|length }} keywords found
-                </div>
             </div>
 
-            <!-- Loading State -->
-            <div id="loadingState" class="hidden text-center py-8">
-                <div class="loading w-8 h-8 border-2 border-primary border-t-transparent rounded-full mx-auto mb-4"></div>
-                <p class="text-muted-foreground">Analyzing keywords...</p>
-            </div>
-
-            <!-- Empty State -->
-            <div id="emptyState" class="text-center py-12 {% if keyword_results %}hidden{% endif %}">
-                <div class="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg class="w-8 h-8 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                    </svg>
+            <!-- Results Section -->
+            <div class="card">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-semibold">Keyword Results</h2>
+                    <div id="resultsCount" class="text-sm text-muted-foreground"></div>
                 </div>
-                <h3 class="text-lg font-medium mb-2">No keywords found</h3>
-                <p class="text-muted-foreground">Enter a seed keyword to start your research</p>
-            </div>
 
-            <!-- Results Table -->
-            <div id="resultsTable" class="{% if not keyword_results %}hidden{% endif %}">
-                <div class="overflow-x-auto">
-                    <table class="w-full">
-                        <thead>
-                            <tr class="border-b border-border">
-                                <th class="text-left py-3 px-4 font-medium">Keyword</th>
-                                <th class="text-left py-3 px-4 font-medium cursor-pointer" onclick="sortResults('volume')">
-                                    Search Volume <span id="volumeSort">↕</span>
-                                </th>
-                                <th class="text-left py-3 px-4 font-medium cursor-pointer" onclick="sortResults('difficulty')">
-                                    Difficulty <span id="difficultySort">↕</span>
-                                </th>
-                                <th class="text-left py-3 px-4 font-medium">Intent</th>
-                                <th class="text-left py-3 px-4 font-medium cursor-pointer" onclick="sortResults('opportunity')">
-                                    Opportunity <span id="opportunitySort">↕</span>
-                                </th>
-                                <th class="text-left py-3 px-4 font-medium">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="resultsBody">
-                            {% for result in keyword_results %}
-                                <tr class="border-b border-border hover:bg-muted/50 fade-in">
-                                    <td class="py-3 px-4 font-medium">{{ result.keyword }}</td>
-                                    <td class="py-3 px-4">{{ result.volume|int|tojson|safe }}</td>
-                                    <td class="py-3 px-4">
-                                        <span class="badge {{ 'badge-success' if result.difficulty <= 30 else 'badge-warning' if result.difficulty <= 70 else 'badge-destructive' }}">
-                                            {{ result.difficulty }}
-                                        </span>
-                                    </td>
-                                    <td class="py-3 px-4 capitalize">{{ result.intent }}</td>
-                                    <td class="py-3 px-4">
-                                        <span class="badge {{ 'badge-success' if result.opportunity >= 8 else 'badge-warning' if result.opportunity >= 6 else 'badge-destructive' }}">
-                                            {{ result.opportunity|round(1) }}/10
-                                        </span>
-                                    </td>
-                                    <td class="py-3 px-4">
-                                        <button
-                                            onclick="saveKeyword('{{ result.keyword|escape|replace("'", "\\'") }}')"
-                                            class="text-primary hover:text-primary-foreground hover:bg-primary px-3 py-1 rounded text-sm transition-colors"
-                                            {{ 'disabled' if result.keyword in saved_keywords else '' }}
-                                        >
-                                            {{ 'Saved' if result.keyword in saved_keywords else 'Save' }}
-                                        </button>
-                                    </td>
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <!-- Saved Keywords -->
-        <div class="card mt-8">
-            <h2 class="text-xl font-semibold mb-4">Saved Keywords</h2>
-            <div id="savedKeywords" class="space-y-2">
-                {% if saved_keywords %}
-                    {% for keyword in saved_keywords %}
-                        <div class="flex items-center justify-between bg-muted/50 rounded-lg p-3">
-                            <span class="font-medium">{{ keyword }}</span>
-                            <button
-                                onclick="removeKeyword('{{ keyword|escape|replace("'", "\\'") }}')"
-                                class="text-destructive hover:bg-destructive hover:text-destructive-foreground px-2 py-1 rounded text-sm transition-colors"
-                            >
-                                Remove
-                            </button>
+                <!-- Summary -->
+                <div id="keywordSummary" class="hidden mb-6">
+                    <h3 class="text-lg font-medium mb-4">Keyword: <span id="keywordName" class="text-primary font-bold"></span></h3>
+                    <div class="metric-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="metric-card">
+                            <span class="text-sm text-muted-foreground">Difficulty</span>
+                            <div class="text-xl font-bold text-primary"><span id="keywordDifficulty"></span>/100</div>
                         </div>
-                    {% endfor %}
-                {% else %}
-                    <p class="text-muted-foreground">No saved keywords yet. Start saving keywords from your research!</p>
-                {% endif %}
+                        <div class="metric-card">
+                            <span class="text-sm text-muted-foreground">Search Volume</span>
+                            <div class="text-xl font-bold text-success"><span id="keywordSearchVolume"></span></div>
+                        </div>
+                        <div class="metric-card">
+                            <span class="text-sm text-muted-foreground">Clicks</span>
+                            <div class="text-xl font-bold text-warning"><span id="keywordClicks"></span></div>
+                        </div>
+                        <div class="metric-card">
+                            <span class="text-sm text-muted-foreground">CPC</span>
+                            <div class="text-xl font-bold text-accent-foreground"><span id="keywordCpc"></span> USD</div>
+                        </div>
+                        <div class="metric-card">
+                            <span class="text-sm text-muted-foreground">Global Volume</span>
+                            <div class="text-xl font-bold text-primary"><span id="keywordGlobalVolume"></span></div>
+                        </div>
+                        <div class="metric-card">
+                            <span class="text-sm text-muted-foreground">Traffic Potential</span>
+                            <div class="text-xl font-bold text-success"><span id="keywordTrafficPotential"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Loading State -->
+                <div id="loadingState" class="hidden text-center py-8">
+                    <div class="loading w-12 h-12 border-4 border-primary border-t-transparent rounded-full mx-auto mb-4"></div>
+                    <p class="text-muted-foreground">Analyzing keywords...</p>
+                </div>
+
+                <!-- Empty State -->
+                <div id="emptyState" class="text-center py-12">
+                    <div class="w-24 h-24 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-12 h-12 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-medium mb-2">No keywords found</h3>
+                    <p class="text-muted-foreground">Enter a seed keyword to start your research</p>
+                </div>
+
+                <!-- Results Table -->
+                <div id="resultsTable" class="hidden results-table">
+                    <div class="overflow-x-auto">
+                        <div id="resultsBody" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <!-- Results will be inserted here as cards -->
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </main>
-</div>
 
-<script>
-    let currentResults = {{ keyword_results|tojson|safe }};
-    let savedKeywordsList = {{ saved_keywords|tojson|safe }};
-    let sortConfig = { key: null, direction: 'asc' };
+            <!-- Saved Keywords -->
+            <div class="card mt-8">
+                <h2 class="text-xl font-semibold mb-4">Saved Keywords</h2>
+                <div id="savedKeywords" class="space-y-2">
+                    <p class="text-muted-foreground">No saved keywords yet. Start saving keywords from your research!</p>
+                </div>
+            </div>
+        </main>
+    </div>
 
-    // Show loading state on form submit
-    document.getElementById('keywordForm').addEventListener('submit', function() {
-        document.getElementById('loadingState').classList.remove('hidden');
-        document.getElementById('emptyState').classList.add('hidden');
-        document.getElementById('resultsTable').classList.add('hidden');
-        document.getElementById('searchBtn').disabled = true;
-    });
+    <script>
+        let currentResults = [];
+        let savedKeywordsList = JSON.parse(localStorage.getItem('savedKeywords') || '[]');
+        let sortConfig = { key: null, direction: 'asc' };
 
-    function displayResults() {
-        const resultsBody = document.getElementById('resultsBody');
-        const resultsCount = document.getElementById('resultsCount');
-        const resultsTable = document.getElementById('resultsTable');
-        const emptyState = document.getElementById('emptyState');
+        async function searchKeywords() {
+            const keyword = document.getElementById('keywordInput').value.trim();
+            const country = document.getElementById('countrySelect').value;
+            if (!keyword) {
+                alert('Please enter a keyword');
+                return;
+            }
 
-        if (currentResults.length === 0) {
-            resultsTable.classList.add('hidden');
-            emptyState.classList.remove('hidden');
-            resultsCount.textContent = '0 keywords found';
-            return;
+            document.getElementById('loadingState').classList.remove('hidden');
+            document.getElementById('emptyState').classList.add('hidden');
+            document.getElementById('resultsTable').classList.add('hidden');
+            document.getElementById('keywordSummary').classList.add('hidden');
+            document.getElementById('searchBtn').disabled = true;
+
+            try {
+                const response = await fetch('/api/keyword-difficulty', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ keyword, country })
+                });
+                const data = await response.json();
+
+                if (response.ok && data.ok) {
+                    // Update summary with all metrics
+                    document.getElementById('keywordName').textContent = data.keyword || 'N/A';
+                    document.getElementById('keywordDifficulty').textContent = data.difficulty || 'N/A';
+                    document.getElementById('keywordSearchVolume').textContent = data.shortage ? data.shortage.toLocaleString() : 'N/A';
+                    document.getElementById('keywordClicks').textContent = data.clicks ? data.clicks.toLocaleString() : 'N/A';
+                    document.getElementById('keywordCpc').textContent = data.cpc ? data.cpc.toFixed(2) : 'N/A';
+                    document.getElementById('keywordGlobalVolume').textContent = data.globalVolume ? data.globalVolume.toLocaleString() : 'N/A';
+                    document.getElementById('keywordTrafficPotential').textContent = data.trafficPotential ? data.trafficPotential.toLocaleString() : 'N/A';
+                    document.getElementById('keywordSummary').classList.remove('hidden');
+
+                    // Handle SERP data
+                    currentResults = data.serp && data.serp.length > 0 ? data.serp.map(row => ({
+                        keyword: data.keyword || 'N/A',
+                        difficulty: data.difficulty || 'N/A',
+                        searchVolume: data.shortage || 'N/A',
+                        clicks: data.clicks || 'N/A',
+                        cpc: data.cpc || 'N/A',
+                        globalVolume: data.globalVolume || 'N/A',
+                        trafficPotential: data.trafficPotential || 'N/A',
+                        position: row.pos || 'N/A',
+                        title: row.title || 'N/A',
+                        url: row.url || '#',
+                        dr: row.dr || 'N/A',
+                        traffic: row.traffic || 'N/A'
+                    })) : [];
+
+                    displayResults();
+                } else {
+                    throw new Error(data.error || 'Failed to fetch keyword data');
+                }
+            } catch (error) {
+                alert(`Error: ${error.message}`);
+                document.getElementById('emptyState').classList.remove('hidden');
+            } finally {
+                document.getElementById('loadingState').classList.add('hidden');
+                document.getElementById('searchBtn').disabled = false;
+            }
         }
 
-        // Apply filters
-        let filteredResults = applyFilters(currentResults);
+        function displayResults() {
+            const resultsBody = document.getElementById('resultsBody');
+            const resultsCount = document.getElementById('resultsCount');
+            const resultsTable = document.getElementById('resultsTable');
+            const emptyState = document.getElementById('emptyState');
 
-        resultsCount.textContent = `${filteredResults.length} keywords found`;
-        resultsTable.classList.remove('hidden');
-        emptyState.classList.add('hidden');
+            if (currentResults.length === 0) {
+                resultsTable.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                resultsCount.textContent = '0 results found';
+                return;
+            }
 
-        resultsBody.innerHTML = filteredResults.map(keyword => `
-            <tr class="border-b border-border hover:bg-muted/50 fade-in">
-                <td class="py-3 px-4 font-medium">${keyword.keyword}</td>
-                <td class="py-3 px-4">${keyword.volume.toLocaleString()}</td>
-                <td class="py-3 px-4">
-                    <span class="badge ${getDifficultyClass(keyword.difficulty)}">
-                        ${keyword.difficulty}
-                    </span>
-                </td>
-                <td class="py-3 px-4 capitalize">${keyword.intent}</td>
-                <td class="py-3 px-4">
-                    <span class="badge ${getOpportunityClass(keyword.opportunity)}">
-                        ${keyword.opportunity.toFixed(1)}/10
-                    </span>
-                </td>
-                <td class="py-3 px-4">
+            resultsCount.textContent = `${currentResults.length} results found`;
+            resultsTable.classList.remove('hidden');
+            emptyState.classList.add('hidden');
+
+            resultsBody.innerHTML = currentResults.map(row => `
+                <div class="metric-card p-4 bg-white dark:bg-muted rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    <h4 class="text-md font-semibold text-primary mb-2">Position: ${row.position}</h4>
+                    <p class="text-sm text-muted-foreground mb-1">Title: <span class="text-foreground">${row.title}</span></p>
+                    <p class="text-sm text-muted-foreground mb-1">URL: <a href="${row.url}" target="_blank" class="text-blue-500 hover:underline">${row.url}</a></p>
+                    <div class="grid grid-cols-2 gap-2 mt-2">
+                        <div class="text-sm"><span class="font-medium">DR:</span> ${row.dr}</div>
+                        <div class="text-sm"><span class="font-medium">Traffic:</span> ${row.traffic.toLocaleString() || 'N/A'}</div>
+                        <div class="text-sm"><span class="font-medium">Clicks:</span> ${row.clicks.toLocaleString() || 'N/A'}</div>
+                        <div class="text-sm"><span class="font-medium">CPC:</span> ${row.cpc.toFixed(2) || 'N/A'} USD</div>
+                    </div>
                     <button
-                        onclick="saveKeyword('${keyword.keyword.replace(/'/g, "\\'")}')"
-                        class="text-primary hover:text-primary-foreground hover:bg-primary px-3 py-1 rounded text-sm transition-colors"
-                        ${savedKeywordsList.includes(keyword.keyword) ? 'disabled' : ''}
+                        onclick="saveKeyword('${row.keyword}')"
+                        class="mt-3 text-primary hover:text-primary-foreground hover:bg-primary px-3 py-1 rounded text-sm transition-colors"
+                        ${savedKeywordsList.includes(row.keyword) ? 'disabled' : ''}
                     >
-                        ${savedKeywordsList.includes(keyword.keyword) ? 'Saved' : 'Save'}
+                        ${savedKeywordsList.includes(row.keyword) ? 'Saved' : 'Save'}
                     </button>
-                </td>
-            </tr>
-        `).join('');
-    }
+                </div>
+            `).join('');
+        }
 
-    function applyFilters(results) {
-        const volumeFilter = document.getElementById('volumeFilter').value;
-        const difficultyFilter = document.getElementById('difficultyFilter').value;
-        const intentFilter = document.getElementById('intentFilter').value;
-
-        return results.filter(keyword => {
-            // Volume filter
-            if (volumeFilter) {
-                if (volumeFilter === 'high' && keyword.volume < 1000) return false;
-                if (volumeFilter === 'medium' && (keyword.volume < 100 || keyword.volume > 1000)) return false;
-                if (volumeFilter === 'low' && keyword.volume > 100) return false;
+        function saveKeyword(keyword) {
+            if (!savedKeywordsList.includes(keyword)) {
+                savedKeywordsList.push(keyword);
+                localStorage.setItem('savedKeywords', JSON.stringify(savedKeywordsList));
+                displaySavedKeywords();
+                displayResults();
             }
+        }
 
-            // Difficulty filter
-            if (difficultyFilter) {
-                if (difficultyFilter === 'easy' && keyword.difficulty > 30) return false;
-                if (difficultyFilter === 'medium' && (keyword.difficulty < 31 || keyword.difficulty > 70)) return false;
-                if (difficultyFilter === 'hard' && keyword.difficulty < 71) return false;
-            }
-
-            // Intent filter
-            if (intentFilter && keyword.intent !== intentFilter) return false;
-
-            return true;
-        });
-    }
-
-    function sortResults(key) {
-        const direction = sortConfig.key === key && sortConfig.direction === 'asc' ? 'desc' : 'asc';
-        sortConfig = { key, direction };
-
-        currentResults.sort((a, b) => {
-            if (direction === 'asc') {
-                return a[key] > b[key] ? 1 : -1;
-            } else {
-                return a[key] < b[key] ? 1 : -1;
-            }
-        });
-
-        // Update sort indicators
-        document.querySelectorAll('[id$="Sort"]').forEach(el => el.textContent = '↕');
-        document.getElementById(key + 'Sort').textContent = direction === 'asc' ? '↑' : '↓';
-
-        displayResults();
-    }
-
-    function saveKeyword(keyword) {
-        if (!savedKeywordsList.includes(keyword)) {
-            savedKeywordsList.push(keyword);
+        function removeKeyword(keyword) {
+            savedKeywordsList = savedKeywordsList.filter(k => k !== keyword);
             localStorage.setItem('savedKeywords', JSON.stringify(savedKeywordsList));
-            // Update hidden inputs
-            const form = document.getElementById('keywordForm');
-            const input = document.createElement('input');
-            input.type = 'hidden';
-            input.name = 'saved_keywords';
-            input.value = keyword;
-            form.appendChild(input);
             displaySavedKeywords();
             displayResults();
         }
-    }
 
-    function removeKeyword(keyword) {
-        savedKeywordsList = savedKeywordsList.filter(k => k !== keyword);
-        localStorage.setItem('savedKeywords', JSON.stringify(savedKeywordsList));
-        // Update hidden inputs
-        const form = document.getElementById('keywordForm');
-        form.querySelectorAll(`input[name="saved_keywords"][value="${keyword.replace(/"/g, '\\"')}"]`).forEach(el => el.remove());
-        displaySavedKeywords();
-        displayResults();
-    }
-
-    function displaySavedKeywords() {
-        const savedContainer = document.getElementById('savedKeywords');
-
-        if (savedKeywordsList.length === 0) {
-            savedContainer.innerHTML = '<p class="text-muted-foreground">No saved keywords yet. Start saving keywords from your research!</p>';
-            return;
+        function displaySavedKeywords() {
+            const savedContainer = document.getElementById('savedKeywords');
+            if (savedKeywordsList.length === 0) {
+                savedContainer.innerHTML = '<p class="text-muted-foreground">No saved keywords yet. Start saving keywords from your research!</p>';
+                return;
+            }
+            savedContainer.innerHTML = savedKeywordsList.map(keyword => `
+                <div class="flex items-center justify-between bg-muted/50 rounded-lg p-3">
+                    <span class="font-medium">${keyword}</span>
+                    <button
+                        onclick="removeKeyword('${keyword}')"
+                        class="text-destructive hover:bg-destructive hover:text-destructive-foreground px-2 py-1 rounded text-sm transition-colors"
+                    >
+                        Remove
+                    </button>
+                </div>
+            `).join('');
         }
 
-        savedContainer.innerHTML = savedKeywordsList.map(keyword => `
-            <div class="flex items-center justify-between bg-muted/50 rounded-lg p-3">
-                <span class="font-medium">${keyword}</span>
-                <button
-                    onclick="removeKeyword('${keyword.replace(/'/g, "\\'")}')"
-                    class="text-destructive hover:bg-destructive hover:text-destructive-foreground px-2 py-1 rounded text-sm transition-colors"
-                >
-                    Remove
-                </button>
-            </div>
-        `).join('');
-    }
+        document.getElementById('keywordInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') searchKeywords();
+        });
 
-    function getDifficultyClass(difficulty) {
-        if (difficulty <= 30) return 'badge-success';
-        if (difficulty <= 70) return 'badge-warning';
-        return 'badge-destructive';
-    }
-
-    function getOpportunityClass(opportunity) {
-        if (opportunity >= 8) return 'badge-success';
-        if (opportunity >= 6) return 'badge-warning';
-        return 'badge-destructive';
-    }
-
-    // Event listeners
-    document.getElementById('volumeFilter').addEventListener('change', displayResults);
-    document.getElementById('difficultyFilter').addEventListener('change', displayResults);
-    document.getElementById('intentFilter').addEventListener('change', displayResults);
-
-    // Initialize
-    displaySavedKeywords();
-    displayResults();
-</script>
+        displaySavedKeywords();
+    </script>
+</body>
+</html>
