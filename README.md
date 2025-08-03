@@ -160,3 +160,60 @@ Email: fahad.shakeel.dev@gmail.com
 ## Acknowledgments
 - Flask community
 - Tailwind CSS & Lucide Icons
+
+
+
+## 📸 Project Screenshots
+
+Explore the key features and pages of the SEO Dashboard:
+
+---
+
+### 🏠 Home Page
+![Home](screenshorts/Home.png)
+
+---
+
+### 📊 Dashboard
+![Dashboard](screenshorts/Dashboard.png)
+
+---
+
+### 🔍 Keyword Research
+![Keyword Research](screenshorts/Keyword-research.png)
+
+---
+
+### 🧠 Competitor Analysis
+![Competitor Analysis](screenshorts/Competitor-analysis.png)
+
+---
+
+### 📑 Content Analyzer
+![Content Analyzer](screenshorts/Content-analyzer.png)
+
+---
+
+### 🧩 Features Page
+![Features](screenshorts/Features.png)
+
+---
+
+### 🔒 Auth Login / Signup
+| Login | Signup |
+|-------|--------|
+| ![Login](screenshorts/Auth_login.png) | ![Signup](screenshorts/Auth_signup.png) |
+
+---
+
+### 🏢 About & Contact
+| About | Contact                              |
+|-------|--------------------------------------|
+| ![About](screenshorts/About.png) | ![Contact](screenshorts/Contact.png) |
+
+---
+
+### 🛠 Services & Site Audit
+| Services | Site Audit |
+|----------|------------|
+| ![Services](screenshorts/Services.png) | ![Audit](screenshorts/Site-audit.png) |
