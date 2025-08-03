@@ -1,3 +1,402 @@
+<!--&lt;!&ndash;<!DOCTYPE html>&ndash;&gt;-->
+<!--&lt;!&ndash;<html lang="en">&ndash;&gt;-->
+<!--&lt;!&ndash;<head>&ndash;&gt;-->
+<!--&lt;!&ndash;  <meta charset="UTF-8">&ndash;&gt;-->
+<!--&lt;!&ndash;  <meta name="viewport" content="width=device-width, initial-scale=1.0">&ndash;&gt;-->
+<!--&lt;!&ndash;  <title>Content Gap Analyzer</title>&ndash;&gt;-->
+<!--&lt;!&ndash;  <script src="https://cdn.tailwindcss.com"></script>&ndash;&gt;-->
+<!--&lt;!&ndash;  <link href="https://cdn.jsdelivr.net/npm/lucide-static@0.18.0/font/lucide.css" rel="stylesheet">&ndash;&gt;-->
+<!--&lt;!&ndash;  <style>&ndash;&gt;-->
+<!--&lt;!&ndash;    .gradient-bg {&ndash;&gt;-->
+<!--&lt;!&ndash;      background: linear-gradient(to right, #4f46e5, #7c3aed);&ndash;&gt;-->
+<!--&lt;!&ndash;    }&ndash;&gt;-->
+<!--&lt;!&ndash;    .gradient-text {&ndash;&gt;-->
+<!--&lt;!&ndash;      background: linear-gradient(to right, #4f46e5, #7c3aed);&ndash;&gt;-->
+<!--&lt;!&ndash;      -webkit-background-clip: text;&ndash;&gt;-->
+<!--&lt;!&ndash;      background-clip: text;&ndash;&gt;-->
+<!--&lt;!&ndash;      color: transparent;&ndash;&gt;-->
+<!--&lt;!&ndash;    }&ndash;&gt;-->
+<!--&lt;!&ndash;    .loading-spinner {&ndash;&gt;-->
+<!--&lt;!&ndash;      border-top-color: #4f46e5;&ndash;&gt;-->
+<!--&lt;!&ndash;      animation: spin 1s linear infinite;&ndash;&gt;-->
+<!--&lt;!&ndash;    }&ndash;&gt;-->
+<!--&lt;!&ndash;    @keyframes spin {&ndash;&gt;-->
+<!--&lt;!&ndash;      0% { transform: rotate(0deg); }&ndash;&gt;-->
+<!--&lt;!&ndash;      100% { transform: rotate(360deg); }&ndash;&gt;-->
+<!--&lt;!&ndash;    }&ndash;&gt;-->
+<!--&lt;!&ndash;    .highlight {&ndash;&gt;-->
+<!--&lt;!&ndash;      background-color: #fef08a;&ndash;&gt;-->
+<!--&lt;!&ndash;      padding: 0.1rem 0.2rem;&ndash;&gt;-->
+<!--&lt;!&ndash;      border-radius: 0.2rem;&ndash;&gt;-->
+<!--&lt;!&ndash;    }&ndash;&gt;-->
+<!--&lt;!&ndash;  </style>&ndash;&gt;-->
+<!--&lt;!&ndash;</head>&ndash;&gt;-->
+<!--&lt;!&ndash;<body class="bg-gray-50">&ndash;&gt;-->
+<!--&lt;!&ndash;  <div class="min-h-screen">&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="flex">&ndash;&gt;-->
+<!--&lt;!&ndash;      &lt;!&ndash; Sidebar would go here &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;      <div class="flex-1 p-8">&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="space-y-8">&ndash;&gt;-->
+<!--&lt;!&ndash;          &lt;!&ndash; Header &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="flex justify-between items-center">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div>&ndash;&gt;-->
+<!--&lt;!&ndash;              <h1 class="text-3xl font-bold text-gray-900">Content Gap Analyzer</h1>&ndash;&gt;-->
+<!--&lt;!&ndash;              <p class="text-gray-600 mt-2">Identify missing opportunities in your content compared to competitors</p>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;          &lt;!&ndash; Analysis Input &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">&ndash;&gt;-->
+<!--&lt;!&ndash;            <h3 class="text-lg font-semibold text-gray-900 mb-4">Analyze Content Gaps</h3>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="space-y-4">&ndash;&gt;-->
+<!--&lt;!&ndash;              <div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <label for="primaryKeyword" class="block text-sm font-medium text-gray-700 mb-1">Primary Keyword</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input&ndash;&gt;-->
+<!--&lt;!&ndash;                  type="text"&ndash;&gt;-->
+<!--&lt;!&ndash;                  id="primaryKeyword"&ndash;&gt;-->
+<!--&lt;!&ndash;                  placeholder="Enter your target keyword (e.g., 'best running shoes')"&ndash;&gt;-->
+<!--&lt;!&ndash;                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"&ndash;&gt;-->
+<!--&lt;!&ndash;                />&ndash;&gt;-->
+<!--&lt;!&ndash;              </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;              <div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <label for="draftContent" class="block text-sm font-medium text-gray-700 mb-1">Your Draft Content</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                <textarea&ndash;&gt;-->
+<!--&lt;!&ndash;                  id="draftContent"&ndash;&gt;-->
+<!--&lt;!&ndash;                  rows="8"&ndash;&gt;-->
+<!--&lt;!&ndash;                  placeholder="Paste your draft content here..."&ndash;&gt;-->
+<!--&lt;!&ndash;                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"&ndash;&gt;-->
+<!--&lt;!&ndash;                ></textarea>&ndash;&gt;-->
+<!--&lt;!&ndash;              </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;              <div class="flex justify-end">&ndash;&gt;-->
+<!--&lt;!&ndash;                <button id="analyzeBtn" class="gradient-bg text-white px-8 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300">&ndash;&gt;-->
+<!--&lt;!&ndash;                  Analyze Content Gaps&ndash;&gt;-->
+<!--&lt;!&ndash;                </button>&ndash;&gt;-->
+<!--&lt;!&ndash;              </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;          &lt;!&ndash; Analysis Progress (Initially Hidden) &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          <div id="analysisProgress" class="hidden bg-white rounded-xl p-6 shadow-sm border border-gray-200">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="flex items-center space-x-4">&ndash;&gt;-->
+<!--&lt;!&ndash;              <div class="w-8 h-8 border-4 border-gray-200 border-t-blue-600 rounded-full loading-spinner"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;              <div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <p class="text-gray-700">Analyzing content gaps...</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                <p id="analysisStatus" class="text-sm text-gray-500">Gathering competitor data</p>&ndash;&gt;-->
+<!--&lt;!&ndash;              </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="w-full bg-gray-200 rounded-full h-2.5 mt-4">&ndash;&gt;-->
+<!--&lt;!&ndash;              <div id="analysisProgressBar" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;          &lt;!&ndash; Analysis Results (Initially Hidden) &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          <div id="analysisResults" class="hidden space-y-6">&ndash;&gt;-->
+<!--&lt;!&ndash;            &lt;!&ndash; Summary Card &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">&ndash;&gt;-->
+<!--&lt;!&ndash;              <h3 class="text-lg font-semibold text-gray-900 mb-4">Content Gap Analysis Summary</h3>&ndash;&gt;-->
+<!--&lt;!&ndash;              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="bg-blue-50 p-4 rounded-lg">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <div class="flex items-center">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <i data-lucide="alert-circle" class="h-6 w-6 text-blue-600 mr-2"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <p class="text-sm text-gray-600">Total Gaps Identified</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <p id="totalGaps" class="text-xl font-bold text-blue-600">12</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="bg-purple-50 p-4 rounded-lg">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <div class="flex items-center">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <i data-lucide="file-text" class="h-6 w-6 text-purple-600 mr-2"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <p class="text-sm text-gray-600">Missing Topics</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <p id="missingTopics" class="text-xl font-bold text-purple-600">7</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="bg-green-50 p-4 rounded-lg">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <div class="flex items-center">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <i data-lucide="check-circle" class="h-6 w-6 text-green-600 mr-2"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <p class="text-sm text-gray-600">Strengths</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <p id="strengthsCount" class="text-xl font-bold text-green-600">5</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;              </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            &lt;!&ndash; Keyword Analysis &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">&ndash;&gt;-->
+<!--&lt;!&ndash;              <h3 class="text-lg font-semibold text-gray-900 mb-4">Keyword Analysis</h3>&ndash;&gt;-->
+<!--&lt;!&ndash;              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <h4 class="font-medium text-gray-900 mb-2">Your Keyword Usage</h4>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <div id="keywordUsageChart" class="h-64 bg-gray-50 rounded-lg flex items-center justify-center">&ndash;&gt;-->
+<!--&lt;!&ndash;                    &lt;!&ndash; Chart will be inserted here &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="text-center p-4">&ndash;&gt;-->
+<!--&lt;!&ndash;                      <div class="radial-progress text-blue-600" style="&#45;&#45;value:75; &#45;&#45;size:8rem; &#45;&#45;thickness: 0.75rem;">75%</div>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <p class="mt-2 text-sm text-gray-600">Keyword density</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <h4 class="font-medium text-gray-900 mb-2">Competitor Keyword Comparison</h4>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <div class="space-y-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <div class="flex justify-between text-sm mb-1">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span class="text-gray-600">Primary keyword frequency</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span class="font-medium">You: 8 | Avg: 12</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                      </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <div class="w-full bg-gray-200 rounded-full h-2">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="bg-blue-600 h-2 rounded-full" style="width: 66%"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                      </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <div class="flex justify-between text-sm mb-1">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span class="text-gray-600">LSI keywords used</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span class="font-medium">You: 5 | Avg: 9</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                      </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <div class="w-full bg-gray-200 rounded-full h-2">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="bg-purple-600 h-2 rounded-full" style="width: 55%"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                      </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <div class="flex justify-between text-sm mb-1">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span class="text-gray-600">Related terms coverage</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span class="font-medium">You: 60% | Avg: 85%</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                      </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <div class="w-full bg-gray-200 rounded-full h-2">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="bg-green-600 h-2 rounded-full" style="width: 70%"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                      </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;              </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            &lt;!&ndash; Missing Topics &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">&ndash;&gt;-->
+<!--&lt;!&ndash;              <h3 class="text-lg font-semibold text-gray-900 mb-4">Missing Topics & Opportunities</h3>&ndash;&gt;-->
+<!--&lt;!&ndash;              <div class="space-y-4" id="missingTopicsList">&ndash;&gt;-->
+<!--&lt;!&ndash;                &lt;!&ndash; Topics will be inserted here &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;              </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            &lt;!&ndash; Content Recommendations &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">&ndash;&gt;-->
+<!--&lt;!&ndash;              <h3 class="text-lg font-semibold text-gray-900 mb-4">Content Enhancement Recommendations</h3>&ndash;&gt;-->
+<!--&lt;!&ndash;              <div class="space-y-4" id="contentRecommendations">&ndash;&gt;-->
+<!--&lt;!&ndash;                &lt;!&ndash; Recommendations will be inserted here &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;              </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            &lt;!&ndash; Content Preview &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">&ndash;&gt;-->
+<!--&lt;!&ndash;              <h3 class="text-lg font-semibold text-gray-900 mb-4">Enhanced Content Preview</h3>&ndash;&gt;-->
+<!--&lt;!&ndash;              <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div id="enhancedContentPreview" class="prose max-w-none">&ndash;&gt;-->
+<!--&lt;!&ndash;                  &lt;!&ndash; Enhanced content will be inserted here &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;              </div>&ndash;&gt;-->
+<!--&lt;!&ndash;              <div class="mt-4 flex justify-end">&ndash;&gt;-->
+<!--&lt;!&ndash;                <button class="gradient-bg text-white px-6 py-2 rounded-lg font-medium hover:shadow-lg transition-all duration-300">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <i data-lucide="download" class="w-4 h-4 mr-2 inline"></i> Download Enhanced Content&ndash;&gt;-->
+<!--&lt;!&ndash;                </button>&ndash;&gt;-->
+<!--&lt;!&ndash;              </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;      </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;  <script>&ndash;&gt;-->
+<!--&lt;!&ndash;    document.addEventListener('DOMContentLoaded', function() {&ndash;&gt;-->
+<!--&lt;!&ndash;      lucide.createIcons();&ndash;&gt;-->
+
+<!--&lt;!&ndash;      const analyzeBtn = document.getElementById('analyzeBtn');&ndash;&gt;-->
+<!--&lt;!&ndash;      const primaryKeywordInput = document.getElementById('primaryKeyword');&ndash;&gt;-->
+<!--&lt;!&ndash;      const draftContentInput = document.getElementById('draftContent');&ndash;&gt;-->
+<!--&lt;!&ndash;      const analysisProgress = document.getElementById('analysisProgress');&ndash;&gt;-->
+<!--&lt;!&ndash;      const analysisResults = document.getElementById('analysisResults');&ndash;&gt;-->
+<!--&lt;!&ndash;      const analysisProgressBar = document.getElementById('analysisProgressBar');&ndash;&gt;-->
+<!--&lt;!&ndash;      const analysisStatus = document.getElementById('analysisStatus');&ndash;&gt;-->
+
+<!--&lt;!&ndash;      analyzeBtn.addEventListener('click', function() {&ndash;&gt;-->
+<!--&lt;!&ndash;        const keyword = primaryKeywordInput.value.trim();&ndash;&gt;-->
+<!--&lt;!&ndash;        const content = draftContentInput.value.trim();&ndash;&gt;-->
+
+<!--&lt;!&ndash;        if (!keyword || !content) {&ndash;&gt;-->
+<!--&lt;!&ndash;          alert('Please enter both a primary keyword and your draft content');&ndash;&gt;-->
+<!--&lt;!&ndash;          return;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+<!--&lt;!&ndash;        // Show loading state&ndash;&gt;-->
+<!--&lt;!&ndash;        analysisProgress.classList.remove('hidden');&ndash;&gt;-->
+<!--&lt;!&ndash;        analysisResults.classList.add('hidden');&ndash;&gt;-->
+<!--&lt;!&ndash;        analyzeBtn.disabled = true;&ndash;&gt;-->
+<!--&lt;!&ndash;        analyzeBtn.innerHTML = 'Analyzing...';&ndash;&gt;-->
+
+<!--&lt;!&ndash;        // Simulate analysis progress&ndash;&gt;-->
+<!--&lt;!&ndash;        let progress = 0;&ndash;&gt;-->
+<!--&lt;!&ndash;        const analysisSimulation = setInterval(() => {&ndash;&gt;-->
+<!--&lt;!&ndash;          progress += Math.floor(Math.random() * 10) + 5;&ndash;&gt;-->
+<!--&lt;!&ndash;          if (progress > 100) progress = 100;&ndash;&gt;-->
+
+<!--&lt;!&ndash;          analysisProgressBar.style.width = `${progress}%`;&ndash;&gt;-->
+
+<!--&lt;!&ndash;          // Update status text based on progress&ndash;&gt;-->
+<!--&lt;!&ndash;          if (progress < 25) {&ndash;&gt;-->
+<!--&lt;!&ndash;            analysisStatus.textContent = 'Analyzing keyword usage...';&ndash;&gt;-->
+<!--&lt;!&ndash;          } else if (progress < 50) {&ndash;&gt;-->
+<!--&lt;!&ndash;            analysisStatus.textContent = 'Researching competitor content...';&ndash;&gt;-->
+<!--&lt;!&ndash;          } else if (progress < 75) {&ndash;&gt;-->
+<!--&lt;!&ndash;            analysisStatus.textContent = 'Identifying content gaps...';&ndash;&gt;-->
+<!--&lt;!&ndash;          } else {&ndash;&gt;-->
+<!--&lt;!&ndash;            analysisStatus.textContent = 'Generating recommendations...';&ndash;&gt;-->
+<!--&lt;!&ndash;          }&ndash;&gt;-->
+
+<!--&lt;!&ndash;          if (progress === 100) {&ndash;&gt;-->
+<!--&lt;!&ndash;            clearInterval(analysisSimulation);&ndash;&gt;-->
+<!--&lt;!&ndash;            simulateAnalysisResults(keyword, content);&ndash;&gt;-->
+<!--&lt;!&ndash;          }&ndash;&gt;-->
+<!--&lt;!&ndash;        }, 500);&ndash;&gt;-->
+<!--&lt;!&ndash;      });&ndash;&gt;-->
+
+<!--&lt;!&ndash;      function simulateAnalysisResults(keyword, content) {&ndash;&gt;-->
+<!--&lt;!&ndash;        // Hide progress, show results&ndash;&gt;-->
+<!--&lt;!&ndash;        analysisProgress.classList.add('hidden');&ndash;&gt;-->
+<!--&lt;!&ndash;        analysisResults.classList.remove('hidden');&ndash;&gt;-->
+<!--&lt;!&ndash;        analyzeBtn.disabled = false;&ndash;&gt;-->
+<!--&lt;!&ndash;        analyzeBtn.innerHTML = 'Analyze Content Gaps';&ndash;&gt;-->
+
+<!--&lt;!&ndash;        // Generate random analysis data&ndash;&gt;-->
+<!--&lt;!&ndash;        const totalGaps = Math.floor(Math.random() * 10) + 5;&ndash;&gt;-->
+<!--&lt;!&ndash;        const missingTopics = Math.floor(Math.random() * 5) + 3;&ndash;&gt;-->
+<!--&lt;!&ndash;        const strengthsCount = Math.floor(Math.random() * 5) + 2;&ndash;&gt;-->
+
+<!--&lt;!&ndash;        // Update summary&ndash;&gt;-->
+<!--&lt;!&ndash;        document.getElementById('totalGaps').textContent = totalGaps;&ndash;&gt;-->
+<!--&lt;!&ndash;        document.getElementById('missingTopics').textContent = missingTopics;&ndash;&gt;-->
+<!--&lt;!&ndash;        document.getElementById('strengthsCount').textContent = strengthsCount;&ndash;&gt;-->
+
+<!--&lt;!&ndash;        // Generate missing topics&ndash;&gt;-->
+<!--&lt;!&ndash;        const missingTopicsList = document.getElementById('missingTopicsList');&ndash;&gt;-->
+<!--&lt;!&ndash;        missingTopicsList.innerHTML = '';&ndash;&gt;-->
+
+<!--&lt;!&ndash;        const topics = [&ndash;&gt;-->
+<!--&lt;!&ndash;          { topic: `"${keyword} benefits"`, importance: "High", competitors: Math.floor(Math.random() * 5) + 3 },&ndash;&gt;-->
+<!--&lt;!&ndash;          { topic: `"${keyword} comparison"`, importance: "Medium", competitors: Math.floor(Math.random() * 4) + 2 },&ndash;&gt;-->
+<!--&lt;!&ndash;          { topic: `"best ${keyword} for [specific use]"`, importance: "High", competitors: Math.floor(Math.random() * 6) + 4 },&ndash;&gt;-->
+<!--&lt;!&ndash;          { topic: `"how to choose ${keyword}"`, importance: "Medium", competitors: Math.floor(Math.random() * 5) + 3 },&ndash;&gt;-->
+<!--&lt;!&ndash;          { topic: `"${keyword} maintenance"`, importance: "Low", competitors: Math.floor(Math.random() * 3) + 1 }&ndash;&gt;-->
+<!--&lt;!&ndash;        ].slice(0, missingTopics);&ndash;&gt;-->
+
+<!--&lt;!&ndash;        topics.forEach(topic => {&ndash;&gt;-->
+<!--&lt;!&ndash;          const topicElement = document.createElement('div');&ndash;&gt;-->
+<!--&lt;!&ndash;          topicElement.className = 'border border-gray-200 rounded-lg p-4';&ndash;&gt;-->
+<!--&lt;!&ndash;          topicElement.innerHTML = `&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="flex items-start justify-between">&ndash;&gt;-->
+<!--&lt;!&ndash;              <div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <h4 class="font-medium text-gray-900">${topic.topic}</h4>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="flex items-center mt-2 space-x-4">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <span class="text-xs px-2 py-0.5 rounded-full ${topic.importance === 'High' ? 'bg-red-100 text-red-800' : topic.importance === 'Medium' ? 'bg-yellow-100 text-yellow-800' : 'bg-green-100 text-green-800'}">&ndash;&gt;-->
+<!--&lt;!&ndash;                    ${topic.importance} Priority&ndash;&gt;-->
+<!--&lt;!&ndash;                  </span>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <span class="text-xs text-gray-500">Covered by ${topic.competitors} competitors</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;              </div>&ndash;&gt;-->
+<!--&lt;!&ndash;              <button class="text-blue-600 hover:text-blue-800 text-sm font-medium">&ndash;&gt;-->
+<!--&lt;!&ndash;                <i data-lucide="plus" class="w-4 h-4 mr-1 inline"></i> Add to content&ndash;&gt;-->
+<!--&lt;!&ndash;              </button>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          `;&ndash;&gt;-->
+<!--&lt;!&ndash;          missingTopicsList.appendChild(topicElement);&ndash;&gt;-->
+<!--&lt;!&ndash;        });&ndash;&gt;-->
+
+<!--&lt;!&ndash;        // Generate recommendations&ndash;&gt;-->
+<!--&lt;!&ndash;        const contentRecommendations = document.getElementById('contentRecommendations');&ndash;&gt;-->
+<!--&lt;!&ndash;        contentRecommendations.innerHTML = '';&ndash;&gt;-->
+
+<!--&lt;!&ndash;        const recommendations = [&ndash;&gt;-->
+<!--&lt;!&ndash;          { type: "keyword", recommendation: `Increase usage of primary keyword "${keyword}" (currently appears ${Math.floor(Math.random() * 5) + 3} times, aim for 8-12)` },&ndash;&gt;-->
+<!--&lt;!&ndash;          { type: "structure", recommendation: "Add more subheadings (H2/H3) to improve content structure" },&ndash;&gt;-->
+<!--&lt;!&ndash;          { type: "length", recommendation: "Expand content length (current: ~500 words, aim for 1200+ for this topic)" },&ndash;&gt;-->
+<!--&lt;!&ndash;          { type: "media", recommendation: "Add more visual elements (images, charts, videos)" },&ndash;&gt;-->
+<!--&lt;!&ndash;          { type: "links", recommendation: "Include internal links to related content on your site" }&ndash;&gt;-->
+<!--&lt;!&ndash;        ];&ndash;&gt;-->
+
+<!--&lt;!&ndash;        recommendations.forEach(rec => {&ndash;&gt;-->
+<!--&lt;!&ndash;          const recElement = document.createElement('div');&ndash;&gt;-->
+<!--&lt;!&ndash;          recElement.className = 'flex items-start';&ndash;&gt;-->
+<!--&lt;!&ndash;          recElement.innerHTML = `&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="flex-shrink-0 mt-1">&ndash;&gt;-->
+<!--&lt;!&ndash;              <div class="h-5 w-5 rounded-full ${rec.type === 'keyword' ? 'bg-blue-100 text-blue-600' : rec.type === 'structure' ? 'bg-purple-100 text-purple-600' : rec.type === 'length' ? 'bg-green-100 text-green-600' : 'bg-yellow-100 text-yellow-600'} flex items-center justify-center">&ndash;&gt;-->
+<!--&lt;!&ndash;                <i data-lucide="${rec.type === 'keyword' ? 'search' : rec.type === 'structure' ? 'list-ordered' : rec.type === 'length' ? 'ruler' : 'image'}" class="w-3 h-3"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;              </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="ml-3">&ndash;&gt;-->
+<!--&lt;!&ndash;              <p class="text-sm text-gray-700">${rec.recommendation}</p>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          `;&ndash;&gt;-->
+<!--&lt;!&ndash;          contentRecommendations.appendChild(recElement);&ndash;&gt;-->
+<!--&lt;!&ndash;        });&ndash;&gt;-->
+
+<!--&lt;!&ndash;        // Generate enhanced content preview&ndash;&gt;-->
+<!--&lt;!&ndash;        const enhancedContentPreview = document.getElementById('enhancedContentPreview');&ndash;&gt;-->
+
+<!--&lt;!&ndash;        // Highlight keywords in the original content&ndash;&gt;-->
+<!--&lt;!&ndash;        let enhancedContent = content;&ndash;&gt;-->
+<!--&lt;!&ndash;        enhancedContent = enhancedContent.replace(new RegExp(keyword, 'gi'), match => `<span class="highlight">${match}</span>`);&ndash;&gt;-->
+
+<!--&lt;!&ndash;        // Add some sample enhancements&ndash;&gt;-->
+<!--&lt;!&ndash;        enhancedContent += `&ndash;&gt;-->
+<!--&lt;!&ndash;          <h2>Benefits of ${keyword}</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;          <p>Based on competitor analysis, we've identified these key benefits that your content should cover:</p>&ndash;&gt;-->
+<!--&lt;!&ndash;          <ul>&ndash;&gt;-->
+<!--&lt;!&ndash;            <li>${keyword} improves performance by up to 30%</li>&ndash;&gt;-->
+<!--&lt;!&ndash;            <li>Enhanced durability compared to alternatives</li>&ndash;&gt;-->
+<!--&lt;!&ndash;            <li>Special features that set them apart</li>&ndash;&gt;-->
+<!--&lt;!&ndash;          </ul>&ndash;&gt;-->
+
+<!--&lt;!&ndash;          <h2>How to Choose the Best ${keyword}</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;          <p>When selecting ${keyword}, consider these factors that top competitors mention:</p>&ndash;&gt;-->
+<!--&lt;!&ndash;          <ol>&ndash;&gt;-->
+<!--&lt;!&ndash;            <li>Material quality and construction</li>&ndash;&gt;-->
+<!--&lt;!&ndash;            <li>Size and fit considerations</li>&ndash;&gt;-->
+<!--&lt;!&ndash;            <li>Price vs. value comparison</li>&ndash;&gt;-->
+<!--&lt;!&ndash;          </ol>&ndash;&gt;-->
+<!--&lt;!&ndash;        `;&ndash;&gt;-->
+
+<!--&lt;!&ndash;        enhancedContentPreview.innerHTML = enhancedContent;&ndash;&gt;-->
+
+<!--&lt;!&ndash;        // Refresh icons&ndash;&gt;-->
+<!--&lt;!&ndash;        lucide.createIcons();&ndash;&gt;-->
+<!--&lt;!&ndash;      }&ndash;&gt;-->
+<!--&lt;!&ndash;    });&ndash;&gt;-->
+<!--&lt;!&ndash;  </script>&ndash;&gt;-->
+<!--&lt;!&ndash;</body>&ndash;&gt;-->
+<!--&lt;!&ndash;</html>&ndash;&gt;-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--<!DOCTYPE html>-->
 <!--<html lang="en">-->
 <!--<head>-->
@@ -102,7 +501,7 @@
 <!--                    <i data-lucide="alert-circle" class="h-6 w-6 text-blue-600 mr-2"></i>-->
 <!--                    <div>-->
 <!--                      <p class="text-sm text-gray-600">Total Gaps Identified</p>-->
-<!--                      <p id="totalGaps" class="text-xl font-bold text-blue-600">12</p>-->
+<!--                      <p id="totalGaps" class="text-xl font-bold text-blue-600">0</p>-->
 <!--                    </div>-->
 <!--                  </div>-->
 <!--                </div>-->
@@ -111,7 +510,7 @@
 <!--                    <i data-lucide="file-text" class="h-6 w-6 text-purple-600 mr-2"></i>-->
 <!--                    <div>-->
 <!--                      <p class="text-sm text-gray-600">Missing Topics</p>-->
-<!--                      <p id="missingTopics" class="text-xl font-bold text-purple-600">7</p>-->
+<!--                      <p id="missingTopics" class="text-xl font-bold text-purple-600">0</p>-->
 <!--                    </div>-->
 <!--                  </div>-->
 <!--                </div>-->
@@ -120,7 +519,7 @@
 <!--                    <i data-lucide="check-circle" class="h-6 w-6 text-green-600 mr-2"></i>-->
 <!--                    <div>-->
 <!--                      <p class="text-sm text-gray-600">Strengths</p>-->
-<!--                      <p id="strengthsCount" class="text-xl font-bold text-green-600">5</p>-->
+<!--                      <p id="strengthsCount" class="text-xl font-bold text-green-600">0</p>-->
 <!--                    </div>-->
 <!--                  </div>-->
 <!--                </div>-->
@@ -212,6 +611,7 @@
 <!--    </div>-->
 <!--  </div>-->
 
+<!--  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
 <!--  <script>-->
 <!--    document.addEventListener('DOMContentLoaded', function() {-->
 <!--      lucide.createIcons();-->
@@ -239,7 +639,7 @@
 <!--        analyzeBtn.disabled = true;-->
 <!--        analyzeBtn.innerHTML = 'Analyzing...';-->
 
-<!--        // Simulate analysis progress-->
+<!--        // Simulate progress-->
 <!--        let progress = 0;-->
 <!--        const analysisSimulation = setInterval(() => {-->
 <!--          progress += Math.floor(Math.random() * 10) + 5;-->
@@ -247,7 +647,6 @@
 
 <!--          analysisProgressBar.style.width = `${progress}%`;-->
 
-<!--          // Update status text based on progress-->
 <!--          if (progress < 25) {-->
 <!--            analysisStatus.textContent = 'Analyzing keyword usage...';-->
 <!--          } else if (progress < 50) {-->
@@ -260,52 +659,62 @@
 
 <!--          if (progress === 100) {-->
 <!--            clearInterval(analysisSimulation);-->
-<!--            simulateAnalysisResults(keyword, content);-->
+<!--            // Real API call-->
+<!--            $.ajax({-->
+<!--              url: '/gap-analysis',-->
+<!--              method: 'POST',-->
+<!--              data: JSON.stringify({ keyword: keyword, content: content }),-->
+<!--              contentType: 'application/json;charset=UTF-8',-->
+<!--              dataType: 'json',-->
+<!--              success: function(response) {-->
+<!--                if (response.ok) {-->
+<!--                  updateAnalysisResults(response.result);-->
+<!--                } else {-->
+<!--                  alert('Error: ' + response.error);-->
+<!--                }-->
+<!--                analysisProgress.classList.add('hidden');-->
+<!--                analyzeBtn.disabled = false;-->
+<!--                analyzeBtn.innerHTML = 'Analyze Content Gaps';-->
+<!--              },-->
+<!--              error: function(xhr) {-->
+<!--                console.log('Error:', xhr.responseText);-->
+<!--                alert('An error occurred. Please try again.');-->
+<!--                analysisProgress.classList.add('hidden');-->
+<!--                analyzeBtn.disabled = false;-->
+<!--                analyzeBtn.innerHTML = 'Analyze Content Gaps';-->
+<!--              }-->
+<!--            });-->
 <!--          }-->
 <!--        }, 500);-->
 <!--      });-->
 
-<!--      function simulateAnalysisResults(keyword, content) {-->
-<!--        // Hide progress, show results-->
-<!--        analysisProgress.classList.add('hidden');-->
+<!--      function updateAnalysisResults(result) {-->
 <!--        analysisResults.classList.remove('hidden');-->
-<!--        analyzeBtn.disabled = false;-->
-<!--        analyzeBtn.innerHTML = 'Analyze Content Gaps';-->
-
-<!--        // Generate random analysis data-->
-<!--        const totalGaps = Math.floor(Math.random() * 10) + 5;-->
-<!--        const missingTopics = Math.floor(Math.random() * 5) + 3;-->
-<!--        const strengthsCount = Math.floor(Math.random() * 5) + 2;-->
 
 <!--        // Update summary-->
+<!--        const totalGaps = result.missing_headings.length; // Assuming gaps = missing headings for now-->
+<!--        const missingTopics = result.missing_headings.length;-->
+<!--        const strengthsCount = 0; // Can be enhanced later-->
+
 <!--        document.getElementById('totalGaps').textContent = totalGaps;-->
 <!--        document.getElementById('missingTopics').textContent = missingTopics;-->
 <!--        document.getElementById('strengthsCount').textContent = strengthsCount;-->
 
-<!--        // Generate missing topics-->
+<!--        // Update missing topics-->
 <!--        const missingTopicsList = document.getElementById('missingTopicsList');-->
 <!--        missingTopicsList.innerHTML = '';-->
-
-<!--        const topics = [-->
-<!--          { topic: `"${keyword} benefits"`, importance: "High", competitors: Math.floor(Math.random() * 5) + 3 },-->
-<!--          { topic: `"${keyword} comparison"`, importance: "Medium", competitors: Math.floor(Math.random() * 4) + 2 },-->
-<!--          { topic: `"best ${keyword} for [specific use]"`, importance: "High", competitors: Math.floor(Math.random() * 6) + 4 },-->
-<!--          { topic: `"how to choose ${keyword}"`, importance: "Medium", competitors: Math.floor(Math.random() * 5) + 3 },-->
-<!--          { topic: `"${keyword} maintenance"`, importance: "Low", competitors: Math.floor(Math.random() * 3) + 1 }-->
-<!--        ].slice(0, missingTopics);-->
-
-<!--        topics.forEach(topic => {-->
+<!--        result.missing_headings.forEach(heading => {-->
 <!--          const topicElement = document.createElement('div');-->
 <!--          topicElement.className = 'border border-gray-200 rounded-lg p-4';-->
 <!--          topicElement.innerHTML = `-->
 <!--            <div class="flex items-start justify-between">-->
 <!--              <div>-->
-<!--                <h4 class="font-medium text-gray-900">${topic.topic}</h4>-->
+<!--                <h4 class="font-medium text-gray-900">${heading}</h4>-->
 <!--                <div class="flex items-center mt-2 space-x-4">-->
-<!--                  <span class="text-xs px-2 py-0.5 rounded-full ${topic.importance === 'High' ? 'bg-red-100 text-red-800' : topic.importance === 'Medium' ? 'bg-yellow-100 text-yellow-800' : 'bg-green-100 text-green-800'}">-->
-<!--                    ${topic.importance} Priority-->
+<!--                  <span class="text-xs px-2 py-0.5 rounded-full bg-red-100 text-red-800">-->
+<!--                    High Priority-->
 <!--                  </span>-->
-<!--                  <span class="text-xs text-gray-500">Covered by ${topic.competitors} competitors</span>-->
+<!--                  <span class="text-xs text-gray-500">Covered by competitors</span>-->
 <!--                </div>-->
 <!--              </div>-->
 <!--              <button class="text-blue-600 hover:text-blue-800 text-sm font-medium">-->
@@ -316,25 +725,20 @@
 <!--          missingTopicsList.appendChild(topicElement);-->
 <!--        });-->
 
-<!--        // Generate recommendations-->
+<!--        // Update recommendations (basic for now)-->
 <!--        const contentRecommendations = document.getElementById('contentRecommendations');-->
 <!--        contentRecommendations.innerHTML = '';-->
-
 <!--        const recommendations = [-->
-<!--          { type: "keyword", recommendation: `Increase usage of primary keyword "${keyword}" (currently appears ${Math.floor(Math.random() * 5) + 3} times, aim for 8-12)` },-->
-<!--          { type: "structure", recommendation: "Add more subheadings (H2/H3) to improve content structure" },-->
-<!--          { type: "length", recommendation: "Expand content length (current: ~500 words, aim for 1200+ for this topic)" },-->
-<!--          { type: "media", recommendation: "Add more visual elements (images, charts, videos)" },-->
-<!--          { type: "links", recommendation: "Include internal links to related content on your site" }-->
+<!--          { type: "structure", recommendation: `Add missing headings: ${result.missing_headings.join(', ')}` },-->
+<!--          { type: "length", recommendation: `Increase word count from ${result.your_word_count} to ${result.avg_word_count} for better coverage` }-->
 <!--        ];-->
-
 <!--        recommendations.forEach(rec => {-->
 <!--          const recElement = document.createElement('div');-->
 <!--          recElement.className = 'flex items-start';-->
 <!--          recElement.innerHTML = `-->
 <!--            <div class="flex-shrink-0 mt-1">-->
-<!--              <div class="h-5 w-5 rounded-full ${rec.type === 'keyword' ? 'bg-blue-100 text-blue-600' : rec.type === 'structure' ? 'bg-purple-100 text-purple-600' : rec.type === 'length' ? 'bg-green-100 text-green-600' : 'bg-yellow-100 text-yellow-600'} flex items-center justify-center">-->
-<!--                <i data-lucide="${rec.type === 'keyword' ? 'search' : rec.type === 'structure' ? 'list-ordered' : rec.type === 'length' ? 'ruler' : 'image'}" class="w-3 h-3"></i>-->
+<!--              <div class="h-5 w-5 rounded-full ${rec.type === 'structure' ? 'bg-purple-100 text-purple-600' : 'bg-green-100 text-green-600'} flex items-center justify-center">-->
+<!--                <i data-lucide="${rec.type === 'structure' ? 'list-ordered' : 'ruler'}" class="w-3 h-3"></i>-->
 <!--              </div>-->
 <!--            </div>-->
 <!--            <div class="ml-3">-->
@@ -344,35 +748,15 @@
 <!--          contentRecommendations.appendChild(recElement);-->
 <!--        });-->
 
-<!--        // Generate enhanced content preview-->
+<!--        // Update enhanced content preview-->
 <!--        const enhancedContentPreview = document.getElementById('enhancedContentPreview');-->
-
-<!--        // Highlight keywords in the original content-->
 <!--        let enhancedContent = content;-->
 <!--        enhancedContent = enhancedContent.replace(new RegExp(keyword, 'gi'), match => `<span class="highlight">${match}</span>`);-->
 
-<!--        // Add some sample enhancements-->
-<!--        enhancedContent += `-->
-<!--          <h2>Benefits of ${keyword}</h2>-->
-<!--          <p>Based on competitor analysis, we've identified these key benefits that your content should cover:</p>-->
-<!--          <ul>-->
-<!--            <li>${keyword} improves performance by up to 30%</li>-->
-<!--            <li>Enhanced durability compared to alternatives</li>-->
-<!--            <li>Special features that set them apart</li>-->
-<!--          </ul>-->
-
-<!--          <h2>How to Choose the Best ${keyword}</h2>-->
-<!--          <p>When selecting ${keyword}, consider these factors that top competitors mention:</p>-->
-<!--          <ol>-->
-<!--            <li>Material quality and construction</li>-->
-<!--            <li>Size and fit considerations</li>-->
-<!--            <li>Price vs. value comparison</li>-->
-<!--          </ol>-->
-<!--        `;-->
-
+<!--        // Add missing headings-->
+<!--        enhancedContent += `<h2>${result.missing_headings[0] || 'Additional Section'}</h2><p>Content for this section can be added here.</p>`;-->
 <!--        enhancedContentPreview.innerHTML = enhancedContent;-->
 
-<!--        // Refresh icons-->
 <!--        lucide.createIcons();-->
 <!--      }-->
 <!--    });-->
@@ -393,16 +777,12 @@
 
 
 
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Content Gap Analyzer</title>
+  <title>Content Gap Analyzer - Coming Soon</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/lucide-static@0.18.0/font/lucide.css" rel="stylesheet">
   <style>
@@ -414,14 +794,6 @@
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-    }
-    .loading-spinner {
-      border-top-color: #4f46e5;
-      animation: spin 1s linear infinite;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
     }
     .highlight {
       background-color: #fef08a;
@@ -444,165 +816,17 @@
             </div>
           </div>
 
-          <!-- Analysis Input -->
+          <!-- Coming Soon Section -->
           <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-            <h3 class="text-lg font-semibold text-gray-900 mb-4">Analyze Content Gaps</h3>
-            <div class="space-y-4">
-              <div>
-                <label for="primaryKeyword" class="block text-sm font-medium text-gray-700 mb-1">Primary Keyword</label>
-                <input
-                  type="text"
-                  id="primaryKeyword"
-                  placeholder="Enter your target keyword (e.g., 'best running shoes')"
-                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-              </div>
-
-              <div>
-                <label for="draftContent" class="block text-sm font-medium text-gray-700 mb-1">Your Draft Content</label>
-                <textarea
-                  id="draftContent"
-                  rows="8"
-                  placeholder="Paste your draft content here..."
-                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                ></textarea>
-              </div>
-
-              <div class="flex justify-end">
-                <button id="analyzeBtn" class="gradient-bg text-white px-8 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300">
-                  Analyze Content Gaps
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Analysis Progress (Initially Hidden) -->
-          <div id="analysisProgress" class="hidden bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-            <div class="flex items-center space-x-4">
-              <div class="w-8 h-8 border-4 border-gray-200 border-t-blue-600 rounded-full loading-spinner"></div>
-              <div>
-                <p class="text-gray-700">Analyzing content gaps...</p>
-                <p id="analysisStatus" class="text-sm text-gray-500">Gathering competitor data</p>
-              </div>
-            </div>
-            <div class="w-full bg-gray-200 rounded-full h-2.5 mt-4">
-              <div id="analysisProgressBar" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
-            </div>
-          </div>
-
-          <!-- Analysis Results (Initially Hidden) -->
-          <div id="analysisResults" class="hidden space-y-6">
-            <!-- Summary Card -->
-            <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-              <h3 class="text-lg font-semibold text-gray-900 mb-4">Content Gap Analysis Summary</h3>
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-blue-50 p-4 rounded-lg">
-                  <div class="flex items-center">
-                    <i data-lucide="alert-circle" class="h-6 w-6 text-blue-600 mr-2"></i>
-                    <div>
-                      <p class="text-sm text-gray-600">Total Gaps Identified</p>
-                      <p id="totalGaps" class="text-xl font-bold text-blue-600">0</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="bg-purple-50 p-4 rounded-lg">
-                  <div class="flex items-center">
-                    <i data-lucide="file-text" class="h-6 w-6 text-purple-600 mr-2"></i>
-                    <div>
-                      <p class="text-sm text-gray-600">Missing Topics</p>
-                      <p id="missingTopics" class="text-xl font-bold text-purple-600">0</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="bg-green-50 p-4 rounded-lg">
-                  <div class="flex items-center">
-                    <i data-lucide="check-circle" class="h-6 w-6 text-green-600 mr-2"></i>
-                    <div>
-                      <p class="text-sm text-gray-600">Strengths</p>
-                      <p id="strengthsCount" class="text-xl font-bold text-green-600">0</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Keyword Analysis -->
-            <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-              <h3 class="text-lg font-semibold text-gray-900 mb-4">Keyword Analysis</h3>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <h4 class="font-medium text-gray-900 mb-2">Your Keyword Usage</h4>
-                  <div id="keywordUsageChart" class="h-64 bg-gray-50 rounded-lg flex items-center justify-center">
-                    <!-- Chart will be inserted here -->
-                    <div class="text-center p-4">
-                      <div class="radial-progress text-blue-600" style="--value:75; --size:8rem; --thickness: 0.75rem;">75%</div>
-                      <p class="mt-2 text-sm text-gray-600">Keyword density</p>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <h4 class="font-medium text-gray-900 mb-2">Competitor Keyword Comparison</h4>
-                  <div class="space-y-3">
-                    <div>
-                      <div class="flex justify-between text-sm mb-1">
-                        <span class="text-gray-600">Primary keyword frequency</span>
-                        <span class="font-medium">You: 8 | Avg: 12</span>
-                      </div>
-                      <div class="w-full bg-gray-200 rounded-full h-2">
-                        <div class="bg-blue-600 h-2 rounded-full" style="width: 66%"></div>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="flex justify-between text-sm mb-1">
-                        <span class="text-gray-600">LSI keywords used</span>
-                        <span class="font-medium">You: 5 | Avg: 9</span>
-                      </div>
-                      <div class="w-full bg-gray-200 rounded-full h-2">
-                        <div class="bg-purple-600 h-2 rounded-full" style="width: 55%"></div>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="flex justify-between text-sm mb-1">
-                        <span class="text-gray-600">Related terms coverage</span>
-                        <span class="font-medium">You: 60% | Avg: 85%</span>
-                      </div>
-                      <div class="w-full bg-gray-200 rounded-full h-2">
-                        <div class="bg-green-600 h-2 rounded-full" style="width: 70%"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Missing Topics -->
-            <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-              <h3 class="text-lg font-semibold text-gray-900 mb-4">Missing Topics & Opportunities</h3>
-              <div class="space-y-4" id="missingTopicsList">
-                <!-- Topics will be inserted here -->
-              </div>
-            </div>
-
-            <!-- Content Recommendations -->
-            <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-              <h3 class="text-lg font-semibold text-gray-900 mb-4">Content Enhancement Recommendations</h3>
-              <div class="space-y-4" id="contentRecommendations">
-                <!-- Recommendations will be inserted here -->
-              </div>
-            </div>
-
-            <!-- Content Preview -->
-            <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-              <h3 class="text-lg font-semibold text-gray-900 mb-4">Enhanced Content Preview</h3>
-              <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                <div id="enhancedContentPreview" class="prose max-w-none">
-                  <!-- Enhanced content will be inserted here -->
-                </div>
-              </div>
-              <div class="mt-4 flex justify-end">
-                <button class="gradient-bg text-white px-6 py-2 rounded-lg font-medium hover:shadow-lg transition-all duration-300">
-                  <i data-lucide="download" class="w-4 h-4 mr-2 inline"></i> Download Enhanced Content
-                </button>
+            <div class="text-center">
+              <i data-lucide="clock" class="h-16 w-16 text-blue-600 mx-auto mb-4"></i>
+              <h2 class="text-2xl font-semibold text-gray-900 mb-2">Content Gap Analyzer Coming Soon!</h2>
+              <p class="text-gray-600 mb-4">We're working hard to bring you a powerful tool to analyze content gaps and optimize your SEO performance.</p>
+              <p class="text-gray-500">Stay tuned for updates! This feature will help you identify missing topics, enhance keyword usage, and improve your content's competitiveness.</p>
+              <div class="mt-6">
+                <a href="/dashboard" class="gradient-bg text-white px-8 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300">
+                  Back to Dashboard
+                </a>
               </div>
             </div>
           </div>
@@ -611,154 +835,9 @@
     </div>
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       lucide.createIcons();
-
-      const analyzeBtn = document.getElementById('analyzeBtn');
-      const primaryKeywordInput = document.getElementById('primaryKeyword');
-      const draftContentInput = document.getElementById('draftContent');
-      const analysisProgress = document.getElementById('analysisProgress');
-      const analysisResults = document.getElementById('analysisResults');
-      const analysisProgressBar = document.getElementById('analysisProgressBar');
-      const analysisStatus = document.getElementById('analysisStatus');
-
-      analyzeBtn.addEventListener('click', function() {
-        const keyword = primaryKeywordInput.value.trim();
-        const content = draftContentInput.value.trim();
-
-        if (!keyword || !content) {
-          alert('Please enter both a primary keyword and your draft content');
-          return;
-        }
-
-        // Show loading state
-        analysisProgress.classList.remove('hidden');
-        analysisResults.classList.add('hidden');
-        analyzeBtn.disabled = true;
-        analyzeBtn.innerHTML = 'Analyzing...';
-
-        // Simulate progress
-        let progress = 0;
-        const analysisSimulation = setInterval(() => {
-          progress += Math.floor(Math.random() * 10) + 5;
-          if (progress > 100) progress = 100;
-
-          analysisProgressBar.style.width = `${progress}%`;
-
-          if (progress < 25) {
-            analysisStatus.textContent = 'Analyzing keyword usage...';
-          } else if (progress < 50) {
-            analysisStatus.textContent = 'Researching competitor content...';
-          } else if (progress < 75) {
-            analysisStatus.textContent = 'Identifying content gaps...';
-          } else {
-            analysisStatus.textContent = 'Generating recommendations...';
-          }
-
-          if (progress === 100) {
-            clearInterval(analysisSimulation);
-            // Real API call
-            $.ajax({
-              url: '/gap-analysis',
-              method: 'POST',
-              data: JSON.stringify({ keyword: keyword, content: content }),
-              contentType: 'application/json;charset=UTF-8',
-              dataType: 'json',
-              success: function(response) {
-                if (response.ok) {
-                  updateAnalysisResults(response.result);
-                } else {
-                  alert('Error: ' + response.error);
-                }
-                analysisProgress.classList.add('hidden');
-                analyzeBtn.disabled = false;
-                analyzeBtn.innerHTML = 'Analyze Content Gaps';
-              },
-              error: function(xhr) {
-                console.log('Error:', xhr.responseText);
-                alert('An error occurred. Please try again.');
-                analysisProgress.classList.add('hidden');
-                analyzeBtn.disabled = false;
-                analyzeBtn.innerHTML = 'Analyze Content Gaps';
-              }
-            });
-          }
-        }, 500);
-      });
-
-      function updateAnalysisResults(result) {
-        analysisResults.classList.remove('hidden');
-
-        // Update summary
-        const totalGaps = result.missing_headings.length; // Assuming gaps = missing headings for now
-        const missingTopics = result.missing_headings.length;
-        const strengthsCount = 0; // Can be enhanced later
-
-        document.getElementById('totalGaps').textContent = totalGaps;
-        document.getElementById('missingTopics').textContent = missingTopics;
-        document.getElementById('strengthsCount').textContent = strengthsCount;
-
-        // Update missing topics
-        const missingTopicsList = document.getElementById('missingTopicsList');
-        missingTopicsList.innerHTML = '';
-        result.missing_headings.forEach(heading => {
-          const topicElement = document.createElement('div');
-          topicElement.className = 'border border-gray-200 rounded-lg p-4';
-          topicElement.innerHTML = `
-            <div class="flex items-start justify-between">
-              <div>
-                <h4 class="font-medium text-gray-900">${heading}</h4>
-                <div class="flex items-center mt-2 space-x-4">
-                  <span class="text-xs px-2 py-0.5 rounded-full bg-red-100 text-red-800">
-                    High Priority
-                  </span>
-                  <span class="text-xs text-gray-500">Covered by competitors</span>
-                </div>
-              </div>
-              <button class="text-blue-600 hover:text-blue-800 text-sm font-medium">
-                <i data-lucide="plus" class="w-4 h-4 mr-1 inline"></i> Add to content
-              </button>
-            </div>
-          `;
-          missingTopicsList.appendChild(topicElement);
-        });
-
-        // Update recommendations (basic for now)
-        const contentRecommendations = document.getElementById('contentRecommendations');
-        contentRecommendations.innerHTML = '';
-        const recommendations = [
-          { type: "structure", recommendation: `Add missing headings: ${result.missing_headings.join(', ')}` },
-          { type: "length", recommendation: `Increase word count from ${result.your_word_count} to ${result.avg_word_count} for better coverage` }
-        ];
-        recommendations.forEach(rec => {
-          const recElement = document.createElement('div');
-          recElement.className = 'flex items-start';
-          recElement.innerHTML = `
-            <div class="flex-shrink-0 mt-1">
-              <div class="h-5 w-5 rounded-full ${rec.type === 'structure' ? 'bg-purple-100 text-purple-600' : 'bg-green-100 text-green-600'} flex items-center justify-center">
-                <i data-lucide="${rec.type === 'structure' ? 'list-ordered' : 'ruler'}" class="w-3 h-3"></i>
-              </div>
-            </div>
-            <div class="ml-3">
-              <p class="text-sm text-gray-700">${rec.recommendation}</p>
-            </div>
-          `;
-          contentRecommendations.appendChild(recElement);
-        });
-
-        // Update enhanced content preview
-        const enhancedContentPreview = document.getElementById('enhancedContentPreview');
-        let enhancedContent = content;
-        enhancedContent = enhancedContent.replace(new RegExp(keyword, 'gi'), match => `<span class="highlight">${match}</span>`);
-
-        // Add missing headings
-        enhancedContent += `<h2>${result.missing_headings[0] || 'Additional Section'}</h2><p>Content for this section can be added here.</p>`;
-        enhancedContentPreview.innerHTML = enhancedContent;
-
-        lucide.createIcons();
-      }
     });
   </script>
 </body>

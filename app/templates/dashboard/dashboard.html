@@ -50,33 +50,59 @@
           <i data-lucide="monitor" class="mr-3 h-5 w-5"></i>
           Site Audit
         </a>
-        <a href="/dashboard?feature=gap-analyiser" data-section="gap-analyiser" class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-          <i data-lucide="trending-up" class="mr-3 h-5 w-5"></i>
-          Gap analyzer
-        </a>
-        <a href="#" data-section="serp-analysis" class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-          <i data-lucide="target" class="mr-3 h-5 w-5"></i>
-          SERP Analysis
-        </a>
-        <a href="#" data-section="analytics" class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-          <i data-lucide="bar-chart-3" class="mr-3 h-5 w-5"></i>
-          Analytics
-        </a>
+<!--        <a href="/dashboard?feature=gap-analyiser" data-section="gap-analyiser" class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">-->
+<!--          <i data-lucide="trending-up" class="mr-3 h-5 w-5"></i>-->
+<!--          Gap analyzer-->
+<!--        </a>-->
+<!--        <a href="#" data-section="serp-analysis" class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">-->
+<!--          <i data-lucide="target" class="mr-3 h-5 w-5"></i>-->
+<!--          SERP Analysis-->
+<!--        </a>-->
+<!--        <a href="#" data-section="analytics" class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">-->
+<!--          <i data-lucide="bar-chart-3" class="mr-3 h-5 w-5"></i>-->
+<!--          Analytics-->
+<!--        </a>-->
+
+        <a href="/dashboard?feature=gap-analyiser" data-section="gap-analyiser" class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100 relative">
+  <i data-lucide="trending-up" class="mr-3 h-5 w-5"></i>
+  Gap analyzer
+           <span class="absolute top-1 right-2 bg-yellow-200 text-yellow-800 text-[10px] font-semibold px-2 py-0.5 rounded-full uppercase tracking-wide">Coming Soon</span>
+</a>
+
+<a href="#" data-section="serp-analysis" class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100 relative">
+  <i data-lucide="target" class="mr-3 h-5 w-5"></i>
+  SERP Analysis
+  <span class="absolute top-1 right-2 bg-yellow-200 text-yellow-800 text-[10px] font-semibold px-2 py-0.5 rounded-full uppercase tracking-wide">Coming Soon</span>
+</a>
+
+<a href="#" data-section="analytics" class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100 relative">
+  <i data-lucide="bar-chart-3" class="mr-3 h-5 w-5"></i>
+  Analytics
+  <span class="absolute top-1 right-2 bg-yellow-200 text-yellow-800 text-[10px] font-semibold px-2 py-0.5 rounded-full uppercase tracking-wide">Coming Soon</span>
+</a>
+
+
       </nav>
       <div class="border-t border-gray-200 p-4">
         <div class="flex items-center space-x-3 mb-4">
-          <img src="https://via.placeholder.com/40" alt="User" class="h-10 w-10 rounded-full">
+              <img src="{{ url_for('static', filename='images/user.jpg') }}" alt="User" class="h-10 w-10 rounded-full">
+<!--          <img src="https://via.placeholder.com/40?text={{ session['user_name'][0] if session.get('user_name') else 'U' }}" alt="User" class="h-10 w-10 rounded-full">-->
+<!--          <img src="https://via.placeholder.com/40" alt="User" class="h-10 w-10 rounded-full">-->
+<!--          <div>-->
+<!--            <p class="text-sm font-medium text-gray-900">John Doe</p>-->
+<!--            <p class="text-xs text-gray-500">john@example.com</p>-->
+<!--          </div>-->
           <div>
-            <p class="text-sm font-medium text-gray-900">John Doe</p>
-            <p class="text-xs text-gray-500">john@example.com</p>
-          </div>
+      <p class="text-sm font-medium text-gray-900">{{ session.get('user_name', 'Guest') }}</p>
+      <p class="text-xs text-gray-500">{{ session.get('user_email', 'guest@example.com') }}</p>
+    </div>
         </div>
         <div class="space-y-2">
           <a href="#" data-section="settings" class="nav-link flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
             <i data-lucide="settings" class="mr-3 h-4 w-4"></i>
             Settings
           </a>
-          <a href="#" class="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+          <a href="/auth/logout" class="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
             <i data-lucide="log-out" class="mr-3 h-4 w-4"></i>
             Sign Out
           </a>
@@ -121,33 +147,44 @@
           <i data-lucide="monitor" class="mr-3 h-5 w-5"></i>
           Site Audit
         </a>
-        <a href="/dashboard?feature=gap-analyiser" data-section="gap-analyiser" class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+        <a href="/dashboard?feature=gap-analyiser" data-section="gap-analyiser" class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100 relative">
           <i data-lucide="trending-up" class="mr-3 h-5 w-5"></i>
           Gap analyzer
-        </a>
-        <a href="#" data-section="serp-analysis" class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+           <span class="absolute top-1 right-1 bg-yellow-200 text-yellow-800 text-[6px] font-semibold px-2 py-0.5 rounded-full uppercase tracking-wide">Coming Soon</span>        </a>
+        <a href="#" data-section="serp-analysis" class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100 relative">
           <i data-lucide="target" class="mr-3 h-5 w-5"></i>
           SERP Analysis
+           <span class="absolute top-1 right-1 bg-yellow-200 text-yellow-800 text-[6px] font-semibold px-2 py-0.5 rounded-full uppercase tracking-wide">Coming Soon</span>        </a>
+
+
         </a>
-        <a href="#" data-section="analytics" class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+        <a href="#" data-section="analytics" class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors text-gray-700 hover:bg-gray-100 relative">
           <i data-lucide="bar-chart-3" class="mr-3 h-5 w-5"></i>
           Analytics
+           <span class="absolute top-1 right-1 bg-yellow-200 text-yellow-800 text-[6px] font-semibold px-2 py-0.5 rounded-full uppercase tracking-wide">Coming Soon</span>        </a>
+
         </a>
       </nav>
       <div class="border-t border-gray-200 p-4">
         <div class="flex items-center space-x-3 mb-4">
-          <img src="https://via.placeholder.com/40" alt="User" class="h-10 w-10 rounded-full">
-          <div>
-            <p class="text-sm font-medium text-gray-900">John Doe</p>
-            <p class="text-xs text-gray-500">john@example.com</p>
-          </div>
+<!--          <img src="https://via.placeholder.com/40" alt="User" class="h-10 w-10 rounded-full">-->
+<!--          <div>-->
+<!--            <p class="text-sm font-medium text-gray-900">John Doe</p>-->
+<!--            <p class="text-xs text-gray-500">john@example.com</p>-->
+<!--          </div>-->
+          <img src="{{ url_for('static', filename='images/user.jpg') }}" alt="User" class="h-10 w-10 rounded-full">
+<!--          <img src="images/user_profile.jpg/40?text={{ session['user_name'][0] if session.get('user_name') else 'U' }}" alt="User" class="h-10 w-10 rounded-full">-->
+    <div>
+      <p class="text-sm font-medium text-gray-900">{{ session.get('user_name', 'Guest') }}</p>
+      <p class="text-xs text-gray-500">{{ session.get('user_email', 'guest@example.com') }}</p>
+    </div>
         </div>
         <div class="space-y-2">
           <a href="#" data-section="settings" class="nav-link flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
             <i data-lucide="settings" class="mr-3 h-4 w-4"></i>
             Settings
           </a>
-          <a href="#" class="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
+          <a href="/auth/logout" class="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">
             <i data-lucide="log-out" class="mr-3 h-4 w-4"></i>
             Sign Out
           </a>
